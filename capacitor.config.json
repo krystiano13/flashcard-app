@@ -1,0 +1,8 @@
+{
+  "appId": "com.flashcard.krystianzieja",
+  "appName": "flashcard-app",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
