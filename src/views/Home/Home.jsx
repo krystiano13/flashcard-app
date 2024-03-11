@@ -9,10 +9,16 @@ import addIcon from '../../../public/icons/plus-icon.svg';
 
 export function Home() {
     const [iconId, setIconId] = useState(0);
+    const [searchOpen, setSearchOpen] = useState(false);
     return (
         <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
-            <section id="search" className="flex justify-end items-center">
-
+            <section id="search" className="flex justify-end items-center p-5">
+                <button
+                    onClick={() => setSearchOpen(prev => !prev)}
+                    className={`w-10 p-1.5 rounded-xl ${searchOpen && 'chosen'}`}
+                >
+                    <img src={searchIcon} alt="search icon" />
+                </button>
             </section>
             <section id="content"></section>
             <nav className="w-full flex items-center justify-evenly p-3 glassomorph1">
