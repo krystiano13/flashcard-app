@@ -10,7 +10,7 @@
     --text: #E2E0F0;
 }
 
-.bg { background-color: var(--bg); }
+.bg { background: var(--bg); }
 .bg-primary { background-color: var(--primary); }
 .bg-secondary { background-color: var(--secondary); }
 .bg-accent { background-color: var(--accent); }
@@ -19,6 +19,10 @@
 .text-primary { color: var(--primary); }
 .text-secondary { color: var(--secondary); }
 .text-accent { color: var(--accent); }
+
+#search {
+    backdrop-filter: blur(0px);
+}
 
 .glassomorph1 {
     background: rgba(166, 161, 216, 0.1);
@@ -29,6 +33,14 @@
     border-top: 1px solid rgba(166, 161, 216, 0.3);
 }
 
-.chosen {
+.nav-button { @apply relative; }
+.nav-button::before {
+    content: '';
+    z-index: -1;
     background: linear-gradient(-45deg,var(--accent), var(--primary));
+    @apply w-full h-full absolute block rounded-xl top-0 left-0 opacity-0 transition-opacity;
+}
+
+.chosen::before {
+    @apply opacity-100;
 }
