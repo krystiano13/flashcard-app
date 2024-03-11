@@ -22,13 +22,13 @@
 
 .glassomorph1 {
     background: rgba(166, 161, 216, 0.1);
-    border-radius: 16px;
+    @apply rounded-tl-2xl rounded-tr-2xl;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.9px);
     -webkit-backdrop-filter: blur(6.9px);
-    border: 1px solid rgba(166, 161, 216, 0.35);
+    border-top: 1px solid rgba(166, 161, 216, 0.3);
 }
 
-.choosen {
+.chosen {
     background: linear-gradient(-45deg,var(--accent), var(--primary));
 }
