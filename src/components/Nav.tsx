@@ -1,5 +1,6 @@
 // react imports
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 //assets
 //@ts-ignore
@@ -16,18 +17,20 @@ export function Nav() {
     return (
         <nav
             className="w-full flex h-[10vh] items-center justify-evenly p-5 glassomorph1 rounded-tl-2xl rounded-tr-2xl border-t-[1px] border-solid">
-            <button
+            <NavLink
+                to="/"
                 onClick={() => setIconId(0)}
                 className={`${iconId === 0 && 'chosen'} nav-button w-14 p-1.5 rounded-xl`}
             >
                 <img src={homeIcon} alt="home icon"/>
-            </button>
-            <button
+            </NavLink>
+            <NavLink
+                to="/learn"
                 onClick={() => setIconId(1)}
                 className={`${iconId === 1 && 'chosen'} nav-button w-14 p-1.5 rounded-xl`}
             >
                 <img src={bookIcon} alt="book icon"/>
-            </button>
+            </NavLink>
             <button
                 onClick={() => setIconId(2)}
                 className={`${iconId === 2 && 'chosen'} nav-button w-14 p-1.5 rounded-xl`}

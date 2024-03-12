@@ -12,9 +12,9 @@ export function SearchBar() {
             <form>
                 <input
                     className={`
-                         p-2 outline-0 bg-transparent border-b-[1px] border-primary border-solid text-txt
-                         ${searchOpen ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'} 
-                         transition-all origin-right w-[100%]
+                            p-2 outline-0 bg-transparent border-b-[1px] border-primary border-solid 
+                            ${searchOpen ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'} 
+                            transition-all origin-right w-[100%] text-txt appear1
                         `}
                     name="deck"
                     type="text"
