@@ -1,5 +1,5 @@
 // react imports
-import React, { useState } from "react";
+import React from "react";
 
 // components
 import { Nav } from '../../components/Nav.js';
