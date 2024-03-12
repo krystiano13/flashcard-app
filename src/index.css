@@ -15,6 +15,8 @@
 .bg-secondary { background-color: var(--secondary); }
 .bg-accent { background-color: var(--accent); }
 
+.border-primary { border-color: var(--primary); }
+
 .text-txt { color: var(--text); }
 .text-bg { color: var(--bg); }
 .text-primary { color: var(--primary); }
