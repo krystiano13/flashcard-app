@@ -15,6 +15,7 @@
 .bg-secondary { background-color: var(--secondary); }
 .bg-accent { background-color: var(--accent); }
 
+.text-txt { color: var(--text); }
 .text-bg { color: var(--bg); }
 .text-primary { color: var(--primary); }
 .text-secondary { color: var(--secondary); }
@@ -26,11 +27,10 @@
 
 .glassomorph1 {
     background: rgba(166, 161, 216, 0.1);
-    @apply rounded-tl-2xl rounded-tr-2xl;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.9px);
     -webkit-backdrop-filter: blur(6.9px);
-    border-top: 1px solid rgba(166, 161, 216, 0.3);
+    border-color: rgba(166, 161, 216, 0.3);
 }
 
 .nav-button { @apply relative; }
