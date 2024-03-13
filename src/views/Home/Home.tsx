@@ -10,7 +10,7 @@ export function Home() {
         <>
             <SearchBar />
             <section id="content" className="h-[80vh] p-3 flex flex-col gap-4 appear1">
-                <DeckCard title="Default Deck" cardsInDeck={0} />
+                <DeckCard mode="edit" title="Default Deck" cardsInDeck={0} />
             </section>
         </>
     )
