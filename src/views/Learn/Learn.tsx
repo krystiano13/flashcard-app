@@ -5,6 +5,7 @@ import type { deck } from "../../types/types";
 export function Learn() {
     const [decks, setDecks] = useState<deck[]>([
         {
+            id: 0,
             title: "Default Deck",
             cardsInDeck: 2
         },
@@ -25,6 +26,7 @@ export function Learn() {
                     {
                         decks.map(item => (
                             <DeckCard
+                                key={item.id}
                                 title={item.title}
                                 cardsInDeck={item.cardsInDeck}
                                 mode="learn"
