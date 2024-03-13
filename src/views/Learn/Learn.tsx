@@ -5,12 +5,28 @@ import type { deck } from "../../types/types";
 
 export const Learn = ( ) => {
     const [decksToSee, setDecksToSee] = useState<deck[]>([]);
+    const [cardsToSee, setCardsToSee] = useState<number[]>([]);
     const decks = useContext(DeckContext);
 
     useEffect(() => {
         const decksArray: deck[] = decks;
         setDecksToSee(decksArray.filter(item =>
-            !item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() >= 0)))
+            !item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() >= 0)));
+
+        // calculate cards to see
+        const cardsArray: number[] = [];
+        decksArray.forEach(item => {
+            let cardsAmount: number = 0;
+            item.cards.forEach(element => {
+                if(element.whenToSee.getTime() - new Date().getTime() <= 0) {
+                    cardsAmount++;
+                }
+            });
+            console.log(cardsAmount);
+            cardsArray.unshift(cardsAmount);
+        });
+        setCardsToSee(cardsArray);
+        console.log(cardsArray);
     }, []);
 
     return (
@@ -31,7 +47,7 @@ export const Learn = ( ) => {
                             <DeckCard
                                 key={item.id}
                                 title={item.title}
-                                cardsInDeck={item.cardsInDeck}
+                                cardsInDeck={cardsToSee[item.id]}
                                 mode="learn"
                             />
                         ))
