@@ -7,7 +7,7 @@ export function Learn() {
             {
                 decks.length < 1 &&
                 <div className="w-full h-full flex justify-center items-center">
-                    <p className="text-txt text-xl max-w-[80%] appear1">
+                    <p className="text-txt text-center text-xl max-w-[80%] appear1">
                         You have no cards to check for now
                     </p>
                 </div>

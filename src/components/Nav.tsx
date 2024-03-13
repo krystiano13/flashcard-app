@@ -10,7 +10,7 @@ import addIcon from "../../public/icons/plus-icon.svg";
 //@ts-ignore
 import settingsIcon from "../../public/icons/settings-icon.svg";
 //@ts-ignore
-import bookIcon from '../../public/icons/book-icon.png';
+import bookIcon from '../../public/icons/book-icon.svg';
 
 export function Nav() {
     const [iconId, setIconId] = useState<number>(0);
