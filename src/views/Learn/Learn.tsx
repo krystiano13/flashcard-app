@@ -22,11 +22,9 @@ export const Learn = ( ) => {
                     cardsAmount++;
                 }
             });
-            console.log(cardsAmount);
             cardsArray.unshift(cardsAmount);
         });
         setCardsToSee(cardsArray);
-        console.log(cardsArray);
     }, []);
 
     return (
