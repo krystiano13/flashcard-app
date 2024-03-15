@@ -4,13 +4,13 @@ import { Home } from "./views/Home/Home";
 import { Learn } from "./views/Learn/Learn";
 import { Nav } from "./components/Nav";
 
-import type { deck } from "./types/types";
+import type { deck} from "./types/types";
 
 export const DeckContext = createContext<deck[]>([]);
-export const SearchContext = createContext<deck[]>([]);
+export const SearchContext = createContext<string>("");
 
 function App () {
-    const [search, setSearch] = useState();
+    const [search, setSearch] = useState<string>("");
     const [decks, setDecks] = useState<deck[]>([
         {
             id: 0,
@@ -29,7 +29,7 @@ function App () {
     return (
       <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
           <DeckContext.Provider value={decks}>
-              <SearchContext.Provider value={}>
+              <SearchContext.Provider value={search}>
                   <BrowserRouter>
                       <Routes>
                           <Route path="/" element={<Home />} />
