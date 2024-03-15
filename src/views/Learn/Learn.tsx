@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { SearchBar } from "../../components/Home/SearchBar";
 import { DeckContext } from "../../App";
 import { DeckCard } from "../../components/Home/DeckCard";
 import type { deck } from "../../types/types";
@@ -28,30 +29,34 @@ export const Learn = ( ) => {
     }, []);
 
     return (
-        <section className="w-[100vw] overflow-y-auto appear1 h-[90vh] flex flex-col items-center gap-4 p-3">
-            {
-                decksToSee.length < 1 &&
-                <div className="w-full h-full flex justify-center items-center">
-                    <p className="text-txt text-center text-xl max-w-[80%]">
-                        You have no cards to check for now
-                    </p>
-                </div>
-            }
-            {
-                decksToSee.length >= 1 &&
-                <>
-                    {
-                        decks.map(item => (
-                            <DeckCard
-                                key={item.id}
-                                title={item.title}
-                                cardsInDeck={cardsToSee[item.id]}
-                                mode="learn"
-                            />
-                        ))
-                    }
-                </>
-            }
-        </section>
+        <>
+            <SearchBar />
+            <section className="w-[100vw] overflow-y-auto appear1 h-[80vh] flex flex-col items-center gap-4 p-3">
+                {
+                    decksToSee.length < 1 &&
+                    <div className="w-full h-full flex justify-center items-center">
+                        <p className="text-txt text-center text-xl max-w-[80%]">
+                            You have no cards to check for now
+                        </p>
+                    </div>
+                }
+                {
+                    decksToSee.length >= 1 &&
+                    <>
+                        {
+                            decks.map(item => (
+                                <DeckCard
+                                    key={item.id}
+                                    title={item.title}
+                                    cardsInDeck={cardsToSee[item.id]}
+                                    mode="learn"
+                                />
+                            ))
+                        }
+                    </>
+                }
+            </section>
+        </>
+
     )
 }

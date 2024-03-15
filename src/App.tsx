@@ -7,8 +7,10 @@ import { Nav } from "./components/Nav";
 import type { deck } from "./types/types";
 
 export const DeckContext = createContext<deck[]>([]);
+export const SearchContext = createContext<deck[]>([]);
 
 function App () {
+    const [search, setSearch] = useState();
     const [decks, setDecks] = useState<deck[]>([
         {
             id: 0,
@@ -27,13 +29,15 @@ function App () {
     return (
       <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
           <DeckContext.Provider value={decks}>
-              <BrowserRouter>
-                  <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/learn" element={<Learn />} />
-                  </Routes>
-                  <Nav />
-              </BrowserRouter>
+              <SearchContext.Provider value={}>
+                  <BrowserRouter>
+                      <Routes>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/learn" element={<Learn />} />
+                      </Routes>
+                      <Nav />
+                  </BrowserRouter>
+              </SearchContext.Provider>
           </DeckContext.Provider>
       </main>
   )

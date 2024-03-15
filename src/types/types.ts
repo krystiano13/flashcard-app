@@ -11,3 +11,9 @@ export type card = {
     secondSide: string,
     whenToSee: Date
 }
+
+export type search = {
+    all: deck[],
+    learn: deck[],
+    value: string
+}
