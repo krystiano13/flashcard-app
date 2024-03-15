@@ -26,7 +26,7 @@ export function SearchBar() {
                     placeholder="deck name..."
                     onChange={debounce((e) => {
                         searchSetterContext(e.target.value)
-                    },1000)}
+                    },600)}
                 />
             </form>
             <button

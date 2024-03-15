@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SearchBar } from "../../components/Home/SearchBar";
-import { DeckContext } from "../../App";
+import { DeckContext, SearchContext } from "../../App";
 import { DeckCard } from "../../components/Home/DeckCard";
 import type { deck } from "../../types/types";
 
@@ -8,6 +8,7 @@ export const Learn = ( ) => {
     const [decksToSee, setDecksToSee] = useState<deck[]>([]);
     const [cardsToSee, setCardsToSee] = useState<number[]>([]);
     const decks = useContext(DeckContext);
+    const search = useContext(SearchContext);
 
     useEffect(() => {
         const decksArray: deck[] = decks;
@@ -44,7 +45,7 @@ export const Learn = ( ) => {
                     decksToSee.length >= 1 &&
                     <>
                         {
-                            decks.map(item => (
+                            (decks.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
                                 <DeckCard
                                     key={item.id}
                                     title={item.title}

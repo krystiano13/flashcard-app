@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home/Home";
 import { Learn } from "./views/Learn/Learn";
