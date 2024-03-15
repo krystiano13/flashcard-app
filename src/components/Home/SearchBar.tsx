@@ -1,5 +1,6 @@
 // react imports
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
+import { SearchSetterContext } from "../../App";
 
 // assets
 // @ts-ignore
@@ -7,6 +8,7 @@ import searchIcon from '../../../public/icons/search-icon.svg';
 
 export function SearchBar() {
     const [searchOpen, setSearchOpen] = useState<boolean>(false);
+    const searchSetterContext = useContext(SearchSetterContext);
     return (
         <section id="search" className="w-full h-[10vh] bg flex items-center justify-between p-5">
             <form>
@@ -19,6 +21,7 @@ export function SearchBar() {
                     name="deck"
                     type="text"
                     placeholder="deck name..."
+                    onChange={(e) => searchSetterContext(e.target.value)}
                 />
             </form>
             <button
