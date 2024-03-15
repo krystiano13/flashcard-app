@@ -2,6 +2,9 @@
 import React, {useContext, useState} from "react";
 import { SearchSetterContext } from "../../App";
 
+// libs
+import { debounce } from "../../utils/debounce";
+
 // assets
 // @ts-ignore
 import searchIcon from '../../../public/icons/search-icon.svg';
@@ -21,7 +24,9 @@ export function SearchBar() {
                     name="deck"
                     type="text"
                     placeholder="deck name..."
-                    onChange={(e) => searchSetterContext(e.target.value)}
+                    onChange={debounce((e) => {
+                        searchSetterContext(e.target.value)
+                    },1000)}
                 />
             </form>
             <button

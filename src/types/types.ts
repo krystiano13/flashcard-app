@@ -1,5 +1,7 @@
 import React from "react";
 
+export type debounceFunc = (...args:any) => any|void;
+
 export type deck = {
     id: number,
     title: string,

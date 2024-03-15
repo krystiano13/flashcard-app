@@ -30,10 +30,6 @@ function App () {
         },
     ]);
 
-    useEffect(() => {
-        console.log(search);
-    }, [search]);
-
     return (
       <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
           <DeckContext.Provider value={decks}>
