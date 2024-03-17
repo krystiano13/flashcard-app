@@ -1,2 +1,2 @@
 # Flashcard App
-Coming soon
+Coming soon ...
