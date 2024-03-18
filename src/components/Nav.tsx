@@ -31,12 +31,13 @@ export function Nav() {
             >
                 <img src={bookIcon} alt="book icon"/>
             </NavLink>
-            <button
+            <NavLink
+                to="/create"
                 onClick={() => setIconId(2)}
                 className={`${iconId === 2 && 'chosen'} nav-button w-14 p-1.5 rounded-xl`}
             >
                 <img src={addIcon} alt="plus icon"/>
-            </button>
+            </NavLink>
             <button
                 onClick={() => setIconId(3)}
                 className={`${iconId === 3 && 'chosen'} nav-button w-14 p-1.5 rounded-xl`}

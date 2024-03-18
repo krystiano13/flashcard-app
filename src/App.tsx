@@ -2,9 +2,10 @@ import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home/Home";
 import { Learn } from "./views/Learn/Learn";
+import { DeckCreate } from "./views/DeckCreate/DeckCreate";
 import { Nav } from "./components/Nav";
 
-import type {deck, search} from "./types/types";
+import type { deck } from "./types/types";
 
 export const DeckContext = createContext<deck[]>([]);
 export const SearchContext = createContext<string>("");
@@ -39,6 +40,7 @@ function App () {
                           <Routes>
                               <Route path="/" element={<Home />} />
                               <Route path="/learn" element={<Learn />} />
+                              <Route path="/create" element={<DeckCreate />} />
                           </Routes>
                           <Nav />
                       </BrowserRouter>
