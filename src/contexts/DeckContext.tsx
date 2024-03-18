@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import type { deck } from "../types/types";
 
 export const DeckContext = createContext<deck[]>([]);
+export const DeckSaveContext = createContext<(data:deck[]) => void>(() => {});
 
 // @ts-ignore
 export function DeckContextProvider({ children }) {
@@ -23,7 +24,9 @@ export function DeckContextProvider({ children }) {
 
     return (
         <DeckContext.Provider value={decks}>
-            { children }
+            <DeckSaveContext.Provider value={(data: deck[]) => setDecks(data)}>
+                { children }
+            </DeckSaveContext.Provider>
         </DeckContext.Provider>
     )
 }
