@@ -13,13 +13,14 @@ export function SearchBar() {
     const [searchOpen, setSearchOpen] = useState<boolean>(false);
     const searchSetterContext = useContext(SearchSetterContext);
     return (
-        <section id="search" className="w-full h-[10vh] bg flex items-center justify-between p-5">
+        <section id="search" className="w-[100vw] h-[10vh] bg flex items-center justify-between p-5">
             <form>
                 <input
                     className={`
                             p-2 outline-0 bg-transparent border-b-[1px] border-primary border-solid 
                             ${searchOpen ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'} 
-                            transition-all origin-right w-[100%] text-txt appear1
+                            transition-all origin-right w-[100%] md:w-[80vw] text-txt appear1
+                            text-base md:text-2xl
                         `}
                     name="deck"
                     type="text"
