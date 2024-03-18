@@ -12,7 +12,7 @@ export function DeckCreate() {
         deckSave([
             ...deckContext,
             {
-                id: (deckContext.length - 1),
+                id: (deckContext.length > 0 ? deckContext.length - 1 : 0),
                 title: data.get('deck') as string,
                 cardsInDeck: 0,
                 cards: []

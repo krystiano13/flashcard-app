@@ -13,18 +13,25 @@ export const Learn = ( ) => {
 
     useEffect(() => {
         const decksArray: deck[] = decks;
+        console.log(decksArray);
         setDecksToSee(decksArray.filter(item =>
-            !item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() >= 0)));
+            item.cards.length <= 0 && !item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() >= 0)));
 
         // calculate cards to see
         const cardsArray: number[] = [];
         decksArray.forEach(item => {
             let cardsAmount: number = 0;
-            item.cards.forEach(element => {
-                if(element.whenToSee.getTime() - new Date().getTime() <= 0) {
-                    cardsAmount++;
-                }
-            });
+            if(item.cards.length > 0) {
+                item.cards.forEach(element => {
+                    if(element.whenToSee.getTime() - new Date().getTime() <= 0) {
+                        cardsAmount++;
+                    }
+                });
+            }
+            else {
+                cardsAmount = 0;
+            }
+            console.log(cardsAmount);
             cardsArray.unshift(cardsAmount);
         });
         setCardsToSee(cardsArray);
