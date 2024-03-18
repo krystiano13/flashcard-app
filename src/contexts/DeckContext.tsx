@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { setData } from "../utils/storage";
 import type { deck } from "../types/types";
 
 export const DeckContext = createContext<deck[]>([]);
@@ -21,6 +22,10 @@ export function DeckContextProvider({ children }) {
             ]
         },
     ]);
+
+    useEffect(() => {
+        setData(decks)
+    }, [decks]);
 
     return (
         <DeckContext.Provider value={decks}>
