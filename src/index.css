@@ -67,12 +67,24 @@
     backdrop-filter: blur(0px);
 }
 
+.gradient1 {
+    background: linear-gradient(45deg,var(--accent), var(--secondary));
+}
+
 .glassomorph1 {
     background: rgba(166, 161, 216, 0.1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.9px);
     -webkit-backdrop-filter: blur(6.9px);
     border-color: rgba(166, 161, 216, 0.3);
+}
+
+.glassomorph2 {
+    background: rgba(166, 161, 216, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border-color: rgba(166, 161, 216, 0.4);
 }
 
 .nav-button { @apply relative; }
