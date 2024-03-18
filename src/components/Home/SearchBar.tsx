@@ -1,6 +1,6 @@
 // react imports
-import React, {useContext, useState} from "react";
-import { SearchSetterContext } from "../../App";
+import React, { useContext, useState } from "react";
+import { SearchSetterContext} from "../../contexts/SearchContext";
 
 // libs
 import { debounce } from "../../utils/debounce";

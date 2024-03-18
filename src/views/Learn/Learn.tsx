@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SearchBar } from "../../components/Home/SearchBar";
-import { DeckContext, SearchContext } from "../../App";
+import { SearchContext } from "../../contexts/SearchContext";
+import { DeckContext } from "../../contexts/DeckContext";
 import { DeckCard } from "../../components/Home/DeckCard";
 import type { deck } from "../../types/types";
 

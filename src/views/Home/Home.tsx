@@ -1,6 +1,7 @@
 // react imports
 import React, { useContext } from "react";
-import { DeckContext, SearchContext } from "../../App";
+import { SearchContext } from "../../contexts/SearchContext";
+import { DeckContext } from "../../contexts/DeckContext";
 
 // components
 import { DeckCard } from "../../components/Home/DeckCard.js";
