@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
+import { setData } from "../../utils/storage";
 
 export function DeckCreate() {
     const deckSave = useContext(DeckSaveContext);
     const deckContext = useContext(DeckContext);
 
-    function handleSubmit(e: React.FormEvent) {
+    const [loading, setLoading] = useState<boolean>(false);
+
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         const data = new FormData(e.target as HTMLFormElement);
+
+        setLoading(true);
 
         deckSave([
             ...deckContext,
@@ -18,6 +23,11 @@ export function DeckCreate() {
                 cards: []
             }
         ]);
+
+        await setData(deckContext).then(() => {
+            setLoading(false)
+        });
+
     }
 
     return (
