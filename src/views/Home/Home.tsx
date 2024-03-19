@@ -1,5 +1,6 @@
 // react imports
 import React, { useContext } from "react";
+import { useNavigate } from "react-router";
 import { SearchContext } from "../../contexts/SearchContext";
 import { DeckContext } from "../../contexts/DeckContext";
 
@@ -7,9 +8,14 @@ import { DeckContext } from "../../contexts/DeckContext";
 import { DeckCard } from "../../components/Home/DeckCard.js";
 import { SearchBar } from "../../components/Home/SearchBar";
 
-export function Home() {
+interface Props {
+    setDeck: (value:number) => void
+}
+
+export const Home:React.FC<Props> = ({ setDeck }) => {
     const decks = useContext(DeckContext);
     const search = useContext(SearchContext);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -18,6 +24,10 @@ export function Home() {
                 {
                     (decks.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
                         <DeckCard
+                            onClick={() => {
+                                setDeck(item.id);
+                                navigate('/cards');
+                            }}
                             key={item.id}
                             title={item.title}
                             cardsInDeck={item.cardsInDeck}
