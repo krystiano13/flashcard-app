@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router";
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
-import { setData } from "../../utils/storage";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Modal } from "../../components/DeckCreate/Modal";
 import { Form } from "../../components/DeckCreate/Form";
@@ -35,8 +34,6 @@ export function DeckCreate() {
                 resolve('resolved');
             })
         )().then(() => {
-            setData(deckContext);
-        }).then(() => {
             setLoading(false);
             setModal(true);
         })
