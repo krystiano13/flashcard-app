@@ -15,10 +15,10 @@ function App () {
               <SearchContextProvider>
                   <BrowserRouter>
                       <Routes>
-                          <Route path="/" element={<Home />} />
+                          <Route path="/cards" element={<Home />} />
                           <Route path="/learn" element={<Learn />} />
                           <Route path="/create" element={<DeckCreate />} />
-                          <Route path="/cards" element={<Cards />} />
+                          <Route path="/" element={<Cards />} />
                       </Routes>
                       <Nav />
                   </BrowserRouter>
