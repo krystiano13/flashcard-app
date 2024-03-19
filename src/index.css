@@ -108,7 +108,8 @@
     @apply w-full h-full absolute block rounded-xl top-0 left-0 opacity-0 transition-opacity;
 }
 
-.chosen::before {
+nav a.active::before {
     @apply opacity-100;
 }
+
 

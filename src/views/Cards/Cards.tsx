@@ -10,10 +10,9 @@ export const Cards:React.FC<Props> = ({ deck }) => {
     const deckContext = useContext(DeckContext);
     return (
         <section id="content" className="h-[90vh] p-3 flex flex-col gap-4">
-            <Card title="siema z rana siema z rana" />
             {
                 deck && deckContext[deck].cards.map(item => (
-                    <Card title="siema" />
+                    <Card key={item.id} title={item.oneSide} />
                 ))
             }
             <button
