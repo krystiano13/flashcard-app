@@ -15,7 +15,7 @@ export const Learn = ( ) => {
         const decksArray: deck[] = decks;
         console.log(decksArray);
         setDecksToSee(decksArray.filter(item =>
-            item.cards.length <= 0 && !item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() >= 0)));
+            item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() >= 0)));
 
         // calculate cards to see
         const cardsArray: number[] = [];
