@@ -4,6 +4,7 @@ import { Home } from "./views/Home/Home";
 import { Learn } from "./views/Learn/Learn";
 import { DeckCreate } from "./views/DeckCreate/DeckCreate";
 import { Cards } from "./views/Cards/Cards";
+import { AddCard } from "./views/Cards/AddCard";
 import { Nav } from "./components/Nav";
 import { DeckContextProvider } from "./contexts/DeckContext";
 import { SearchContextProvider } from "./contexts/SearchContext";
@@ -20,6 +21,7 @@ function App () {
                           <Route path="/learn" element={<Learn />} />
                           <Route path="/create" element={<DeckCreate />} />
                           <Route path="/cards" element={<Cards deck={deck} />} />
+                          <Route path="/addcard" element={<AddCard />} />
                       </Routes>
                       <Nav />
                   </BrowserRouter>
