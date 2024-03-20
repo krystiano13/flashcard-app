@@ -11,6 +11,7 @@ export function DeckCreate() {
 
     const [loading, setLoading] = useState<boolean>(false);
     const [modal, setModal] = useState<boolean>(false);
+    const [newDeck, setNewDeck] = useState<number>(0);
 
     const navigate = useNavigate();
 

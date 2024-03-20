@@ -21,7 +21,7 @@ function App () {
                           <Route path="/learn" element={<Learn />} />
                           <Route path="/create" element={<DeckCreate />} />
                           <Route path="/cards" element={<Cards deck={deck} />} />
-                          <Route path="/addcard" element={<AddCard />} />
+                          <Route path="/addcard" element={<AddCard deck={deck} />} />
                       </Routes>
                       <Nav />
                   </BrowserRouter>

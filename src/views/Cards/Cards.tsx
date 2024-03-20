@@ -12,10 +12,14 @@ export const Cards:React.FC<Props> = ({ deck }) => {
     const deckSave = useContext(DeckSaveContext);
     return (
         <section id="content" className="h-[90vh] p-3 flex flex-col gap-4">
-            {
-                deck && deckContext[deck].cards.map(item => (
-                    <Card key={item.id} title={item.oneSide} />
-                ))
+            { deck !== undefined &&
+              <>
+                  {
+                      deckContext[deck as number].cards.map(item => (
+                          <Card key={item.id} title={item.oneSide} />
+                      ))
+                  }
+              </>
             }
             <NavLink
                 to="/addcard"
