@@ -44,7 +44,7 @@ export function DeckCreate() {
     }
 
     function addCards() {
-        // redirect to view that allows to add cards
+        navigate('/cards');
     }
 
     return (
