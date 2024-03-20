@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { DeckContext } from "../../contexts/DeckContext";
+import { DeckContext, DeckSaveContext } from "../../contexts/DeckContext";
 import { Card } from "../../components/Cards/Card";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 
 export const Cards:React.FC<Props> = ({ deck }) => {
     const deckContext = useContext(DeckContext);
+    const deckSave = useContext(DeckSaveContext);
     return (
         <section id="content" className="h-[90vh] p-3 flex flex-col gap-4">
             {

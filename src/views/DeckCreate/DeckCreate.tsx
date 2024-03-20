@@ -56,7 +56,7 @@ export function DeckCreate() {
                         loading && <Spinner />
                     }
                     {
-                        !loading && <Form handleSubmit={handleSubmit} />
+                        !loading && <Form mode="deck" handleSubmit={handleSubmit} />
                     }
                 </>
             }
