@@ -5,7 +5,11 @@ import { Spinner } from "../../components/Spinner/Spinner";
 import { Modal } from "../../components/DeckCreate/Modal";
 import { Form } from "../../components/DeckCreate/Form";
 
-export function DeckCreate() {
+interface Props {
+    setDeck: (id:number) => void
+}
+
+export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
     const deckSave = useContext(DeckSaveContext);
     const deckContext = useContext(DeckContext);
 
@@ -45,6 +49,7 @@ export function DeckCreate() {
     }
 
     function addCards() {
+        setDeck(deckContext.length - 1);
         navigate('/cards');
     }
 

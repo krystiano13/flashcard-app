@@ -27,7 +27,7 @@ export const AddCard:React.FC<Props> = ({ deck }) => {
                 id:elements[deck as number].cardsInDeck,
                 oneSide: data.get('card_one') as string,
                 secondSide: data.get('card_two') as string,
-                whenToSee: new Date()
+                whenToSee: new Date(new Date().getTime() - 1000)
             });
             elements[deck as number].cardsInDeck++;
             deckSave(elements);
