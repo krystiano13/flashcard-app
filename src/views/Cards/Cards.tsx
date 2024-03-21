@@ -11,13 +11,21 @@ export const Cards = () => {
     const [params, setParams] = useSearchParams();
     const [deck, setDeck] = useState<number>(Number(params.get("deck")));
 
+    function deleteCard(id:number) {
+        const data = deckContext;
+        data[deck].cards = data[deck].cards.filter(item => item.id === id);
+        data[deck].cardsInDeck--;
+
+        deckSave(deckContext);
+    }
+
     return (
         <section id="content" className="h-[90vh] p-3 flex flex-col gap-4">
             { deck !== undefined &&
               <>
                   {
                       deckContext[deck as number].cards.map(item => (
-                          <Card key={item.id} title={item.oneSide} />
+                          <Card deleteFunc={() => deleteCard(item.id)} key={item.id} title={item.oneSide} />
                       ))
                   }
               </>
