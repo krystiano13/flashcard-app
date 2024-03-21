@@ -13,7 +13,7 @@ export function DeckContextProvider({ children }) {
     const [decksToSee, setDecksToSee] = useState<deck[]>([]);
     const [cardsToSee, setCardsToSee] = useState<number[]>([]);
 
-    useEffect(() => {
+    const calculateCardsToSee = () => {
         const decksArray: deck[] = decks;
         setDecksToSee(decksArray.filter(item =>
             item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() <= 0)));
@@ -32,17 +32,15 @@ export function DeckContextProvider({ children }) {
             cardsArray.unshift(cardsAmount);
         });
         setCardsToSee(cardsArray);
-
-    }, [decks]);
+    };
 
     useEffect(() => {
-        getData().then(result => {
-            setDecks(result);
-        })
+        getData().then(result => setDecks(result))
     }, []);
 
     useEffect(() => {
-        setData(decks);
+        console.log(decks);
+        setData(decks).then(() => calculateCardsToSee());
     }, [decks]);
 
     return (
