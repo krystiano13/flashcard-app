@@ -33,7 +33,12 @@ export const Cards = () => {
               <>
                   {
                       deckContext[deck as number].cards.map(item => (
-                          <Card deleteFunc={() => deleteCard(item.id)} key={item.id} title={item.oneSide} />
+                          <Card
+                              deleteFunc={() => deleteCard(item.id)}
+                              editFunc={() => navigate(`/addcard?deck=${deck}&card=${item.id}&edit=1&card_one=${item.oneSide}&card_two=${item.secondSide}`)}
+                              key={item.id}
+                              title={item.oneSide}
+                          />
                       ))
                   }
               </>

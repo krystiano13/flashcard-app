@@ -66,7 +66,13 @@ export const AddCard = () => {
                 loading ?
                     <Spinner />
                     :
-                    <Form handleSubmit={params.get('edit') ? editCard : saveCard} mode="card" />
+                    <Form
+                        handleSubmit={params.get('edit') ? editCard : saveCard}
+                        mode="card"
+                        cardMode={params.get('edit') ? 'edit' : 'add'}
+                        oneSide={params.get('card_one') ? params.get('card_one') : null}
+                        secondSide={params.get('card_two') ? params.get('card_two') : null}
+                    />
             }
         </section>
     )
