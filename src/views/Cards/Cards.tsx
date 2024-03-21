@@ -13,8 +13,6 @@ export const Cards = () => {
     const navigate = useNavigate();
 
     function deleteCard(id:number) {
-        console.log(id);
-        console.log(deckContext);
         const data = deckContext;
         const defaultLength = data[deck].cards.length;
 

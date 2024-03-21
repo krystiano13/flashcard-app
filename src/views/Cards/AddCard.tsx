@@ -37,13 +37,36 @@ export const AddCard = () => {
         })
     }
 
+    async function editCard(e:React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const data = new FormData(e.target as HTMLFormElement);
+        const deck = Number(params.get('deck'));
+        const cardId = Number(params.get('card'));
+
+        setLoading(true);
+
+        (async () => new Promise(resolve => {
+            let decksArray = [...decks];
+            decksArray[deck].cards[cardId].oneSide = data.get('card_one') as string;
+            decksArray[deck].cards[cardId].secondSide = data.get('card_two') as string;
+            decksArray[deck].cards[cardId].whenToSee = new Date(new Date().getTime() - 1000);
+
+            deckSave(decksArray);
+            resolve('resolved');
+        }))().then(() => {
+            setLoading(false);
+            navigate(`/cards?deck=${deck}`);
+        })
+
+    }
+
     return (
         <section id="content" className="h-[90vh] p-3 flex justify-center items-center">
             {
                 loading ?
                     <Spinner />
                     :
-                    <Form handleSubmit={saveCard} mode="card" />
+                    <Form handleSubmit={params.get('edit') ? editCard : saveCard} mode="card" />
             }
         </section>
     )
