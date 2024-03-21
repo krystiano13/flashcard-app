@@ -20,8 +20,8 @@ function App () {
                           <Route path="/" element={<Home setDeck={(value:number) => setDeck(value)} />} />
                           <Route path="/learn" element={<Learn />} />
                           <Route path="/create" element={<DeckCreate setDeck={(id:number) => setDeck(id)} />} />
-                          <Route path="/cards" element={<Cards deck={deck} />} />
-                          <Route path="/addcard" element={<AddCard deck={deck} />} />
+                          <Route path="/cards" element={<Cards />} />
+                          <Route path="/addcard" element={<AddCard />} />
                       </Routes>
                       <Nav />
                   </BrowserRouter>

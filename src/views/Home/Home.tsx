@@ -26,7 +26,7 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
                         <DeckCard
                             onClick={() => {
                                 setDeck(item.id);
-                                navigate('/cards');
+                                navigate(`/cards?deck=${item.id}`);
                             }}
                             key={item.id}
                             title={item.title}

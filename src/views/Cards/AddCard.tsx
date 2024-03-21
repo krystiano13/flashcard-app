@@ -1,23 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router";
+import { useSearchParams } from "react-router-dom";
 import { Form } from '../../components/DeckCreate/Form';
 import { Spinner } from "../../components/Spinner/Spinner";
 import { DeckContext, DeckSaveContext } from "../../contexts/DeckContext";
 
-interface Props {
-    deck: number|undefined
-}
-
-export const AddCard:React.FC<Props> = ({ deck }) => {
+export const AddCard = () => {
     const decks = useContext(DeckContext);
     const deckSave = useContext(DeckSaveContext);
     const navigate = useNavigate();
 
+    const [params, setParams] = useSearchParams();
     const [loading, setLoading] = useState<boolean>(false);
 
     async function saveCard(e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const data = new FormData(e.target as HTMLFormElement);
+        const deck = Number(params.get('deck'));
 
         setLoading(true);
 
