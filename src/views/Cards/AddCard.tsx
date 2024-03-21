@@ -22,7 +22,7 @@ export const AddCard = () => {
 
         (async () => new Promise(resolve => {
             let elements = [...decks];
-            elements[deck as number].cards.unshift({
+            elements[deck as number].cards.push({
                 id:elements[deck as number].cardsInDeck,
                 oneSide: data.get('card_one') as string,
                 secondSide: data.get('card_two') as string,
@@ -33,7 +33,7 @@ export const AddCard = () => {
             resolve('resolved');
         }))().then(() => {
             setLoading(false);
-            navigate('/cards');
+            navigate(`/cards?deck=${deck}`);
         })
     }
 
