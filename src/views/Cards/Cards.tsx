@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { DeckContext, DeckSaveContext } from "../../contexts/DeckContext";
 import { Card } from "../../components/Cards/Card";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
 
@@ -10,13 +10,23 @@ export const Cards = () => {
     const deckSave = useContext(DeckSaveContext);
     const [params, setParams] = useSearchParams();
     const [deck, setDeck] = useState<number>(Number(params.get("deck")));
+    const navigate = useNavigate();
 
     function deleteCard(id:number) {
+        console.log(id);
+        console.log(deckContext);
         const data = deckContext;
-        data[deck].cards = data[deck].cards.filter(item => item.id === id);
-        data[deck].cardsInDeck--;
+        const defaultLength = data[deck].cards.length;
 
-        deckSave(deckContext);
+        const newData = data[deck].cards.filter(item => item.id !== id);
+
+        if(defaultLength !== newData.length) {
+            data[deck].cardsInDeck--;
+            data[deck].cards = newData;
+        }
+
+        deckSave(data);
+        navigate(`/cards?deck=${deck}`);
     }
 
     return (
