@@ -3,11 +3,13 @@ import { useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import { Form } from '../../components/DeckCreate/Form';
 import { Spinner } from "../../components/Spinner/Spinner";
-import { DeckContext, DeckSaveContext } from "../../contexts/DeckContext";
+import { DeckContext, DeckSaveContext, CalculateContext } from "../../contexts/DeckContext";
+import { setData } from '../../utils/storage';
 
 export const AddCard = () => {
     const decks = useContext(DeckContext);
     const deckSave = useContext(DeckSaveContext);
+    const calculate = useContext(CalculateContext);
     const navigate = useNavigate();
 
     const [params, setParams] = useSearchParams();
@@ -30,6 +32,7 @@ export const AddCard = () => {
             });
             elements[deck as number].cardsInDeck++;
             deckSave(elements);
+            setData(elements).then(() => calculate());
             resolve('resolved');
         }))().then(() => {
             setLoading(false);

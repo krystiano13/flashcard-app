@@ -6,6 +6,7 @@ export const DeckContext = createContext<deck[]>([]);
 export const DeckSaveContext = createContext<(data:deck[]) => void>(() => {});
 export const CardsToSeeContext = createContext<number[]>([]);
 export const DecksToSeeContext = createContext<deck[]>([]);
+export const CalculateContext = createContext(() => {});
 
 // @ts-ignore
 export function DeckContextProvider({ children }) {
@@ -47,7 +48,9 @@ export function DeckContextProvider({ children }) {
             <DeckSaveContext.Provider value={(data: deck[]) => setDecks(data)}>
                 <DecksToSeeContext.Provider value={decksToSee}>
                     <CardsToSeeContext.Provider value={cardsToSee}>
-                        { children }
+                        <CalculateContext.Provider value={calculateCardsToSee}>
+                            { children }
+                        </CalculateContext.Provider>
                     </CardsToSeeContext.Provider>
                 </DecksToSeeContext.Provider>
             </DeckSaveContext.Provider>

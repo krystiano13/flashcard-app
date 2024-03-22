@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { DeckContext, DeckSaveContext } from "../../contexts/DeckContext";
+import { DeckContext, DeckSaveContext, CalculateContext } from "../../contexts/DeckContext";
 import { Card } from "../../components/Cards/Card";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import { setData } from "../../utils/storage";
 export const Cards = () => {
     const deckContext = useContext(DeckContext);
     const deckSave = useContext(DeckSaveContext);
+    const calculate = useContext(CalculateContext);
     const [params, setParams] = useSearchParams();
     const [deck, setDeck] = useState<number>(Number(params.get("deck")));
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ export const Cards = () => {
             }
 
             deckSave(data);
-            setData(data);
+            setData(data).then(() => calculate());
             resolve('resolved');
         }))().then(() => {
             navigate(`/cards?deck=${deck}`)
