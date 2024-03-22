@@ -13,7 +13,7 @@ export type card = {
     id: number,
     oneSide: string,
     secondSide: string,
-    whenToSee: Date
+    whenToSee: number
 }
 
 export type search = {

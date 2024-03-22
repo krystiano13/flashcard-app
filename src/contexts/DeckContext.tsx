@@ -11,48 +11,19 @@ export const CalculateContext = createContext(() => {});
 // @ts-ignore
 export function DeckContextProvider({ children }) {
     const [decks, setDecks] = useState<deck[]>([]);
-    const [decksToSee, setDecksToSee] = useState<deck[]>([]);
-    const [cardsToSee, setCardsToSee] = useState<number[]>([]);
-
-    const calculateCardsToSee = () => {
-        const decksArray: deck[] = decks;
-        setDecksToSee(decksArray.filter(item =>
-            item.cards.some(el => el.whenToSee.getTime() - new Date().getTime() <= 0)));
-
-        // calculate cards to see
-        const cardsArray: number[] = [];
-        decksArray.forEach(item => {
-            let cardsAmount: number = 0;
-            if(item.cards.length > 0) {
-                item.cards.forEach(element => {
-                    if(element.whenToSee.getTime() - new Date().getTime() <= 0) {
-                        cardsAmount++;
-                    }
-                });
-            }
-            cardsArray.unshift(cardsAmount);
-        });
-        setCardsToSee(cardsArray);
-    };
 
     useEffect(() => {
         getData().then(result => setDecks(result))
     }, []);
 
     useEffect(() => {
-        setData(decks).then(() => calculateCardsToSee());
+        setData(decks);
     }, [decks]);
 
     return (
         <DeckContext.Provider value={decks}>
             <DeckSaveContext.Provider value={(data: deck[]) => setDecks(data)}>
-                <DecksToSeeContext.Provider value={decksToSee}>
-                    <CardsToSeeContext.Provider value={cardsToSee}>
-                        <CalculateContext.Provider value={calculateCardsToSee}>
-                            { children }
-                        </CalculateContext.Provider>
-                    </CardsToSeeContext.Provider>
-                </DecksToSeeContext.Provider>
+                { children }
             </DeckSaveContext.Provider>
         </DeckContext.Provider>
     )

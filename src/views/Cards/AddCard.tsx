@@ -28,7 +28,7 @@ export const AddCard = () => {
                 id:elements[deck as number].cardsInDeck,
                 oneSide: data.get('card_one') as string,
                 secondSide: data.get('card_two') as string,
-                whenToSee: new Date(new Date().getTime() - 1000)
+                whenToSee: new Date(new Date().getTime() - 1000).getTime()
             });
             elements[deck as number].cardsInDeck++;
             deckSave(elements);
@@ -52,7 +52,7 @@ export const AddCard = () => {
             let decksArray = [...decks];
             decksArray[deck].cards[cardId].oneSide = data.get('card_one') as string;
             decksArray[deck].cards[cardId].secondSide = data.get('card_two') as string;
-            decksArray[deck].cards[cardId].whenToSee = new Date(new Date().getTime() - 1000);
+            decksArray[deck].cards[cardId].whenToSee = new Date(new Date().getTime() - 1000).getTime();
 
             deckSave(decksArray);
             resolve('resolved');

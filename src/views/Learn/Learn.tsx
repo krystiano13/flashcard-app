@@ -1,15 +1,42 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { SearchBar } from "../../components/Home/SearchBar";
 import { SearchContext } from "../../contexts/SearchContext";
-import {CardsToSeeContext, DeckContext, DecksToSeeContext} from "../../contexts/DeckContext";
+import {  DeckContext } from "../../contexts/DeckContext";
 import { DeckCard } from "../../components/Home/DeckCard";
 import type { deck } from "../../types/types";
 
 export const Learn = ( ) => {
-    const decksToSee = useContext(DecksToSeeContext);
-    const cardsToSee = useContext(CardsToSeeContext);
+    const [decksToSee, setDecksToSee] = useState<deck[]>([]);
+    const [cardsToSee, setCardsToSee] = useState<number[]>([]);
     const decks = useContext(DeckContext);
     const search = useContext(SearchContext);
+
+    const calculateCardsToSee = () => {
+        const decksArray: deck[] = decks;
+        const newDeckArray = decksArray.filter(item =>
+            item.cards.some(el => el.whenToSee - (new Date()).getTime() <= 0));
+        setDecksToSee(decksArray);
+
+        // calculate cards to see
+        const cardsArray: number[] = [];
+        decksArray.forEach(item => {
+            let cardsAmount: number = 0;
+            if(item.cards.length > 0) {
+                item.cards.forEach(element => {
+                    if(element.whenToSee - (new Date()).getTime() <= 0) {
+                        cardsAmount++;
+                    }
+                });
+            }
+            cardsArray.push(cardsAmount);
+        });
+        setCardsToSee(cardsArray);
+
+    };
+
+    useEffect(() => {
+        calculateCardsToSee();
+    },[])
 
     return (
         <>
