@@ -9,6 +9,10 @@ export async function setData(data:deck[]):Promise<void> {
 }
 
 export async function getData():Promise<deck[]> {
+    if(!Preferences.get({ key: 'storage' })) {
+        return [] as deck[];
+    }
+    
     const data = await Preferences.get({ key: 'storage' });
     return JSON.parse(data.value as string) as deck[];
 }
