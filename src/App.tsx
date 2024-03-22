@@ -5,6 +5,7 @@ import { Learn } from "./views/Learn/Learn";
 import { DeckCreate } from "./views/DeckCreate/DeckCreate";
 import { Cards } from "./views/Cards/Cards";
 import { AddCard } from "./views/Cards/AddCard";
+import { MoreOptions } from "./views/MoreOptions/MoreOptions";
 import { Nav } from "./components/Nav";
 import { DeckContextProvider } from "./contexts/DeckContext";
 import { SearchContextProvider } from "./contexts/SearchContext";
@@ -22,6 +23,7 @@ function App () {
                           <Route path="/create" element={<DeckCreate setDeck={(id:number) => setDeck(id)} />} />
                           <Route path="/cards" element={<Cards />} />
                           <Route path="/addcard" element={<AddCard />} />
+                          <Route path="/more" element={<MoreOptions />} />
                       </Routes>
                       <Nav />
                   </BrowserRouter>

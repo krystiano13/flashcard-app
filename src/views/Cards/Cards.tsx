@@ -36,6 +36,16 @@ export const Cards = () => {
 
     return (
         <section id="content" className="h-[90vh] p-3 flex flex-col gap-4">
+             <NavLink
+                to={`/addcard?deck=${deck}`}
+                className="w-full text-center appear2 glassomorph1 text-white font-semibold text-lg rounded-lg border-solid border-[1px] p-2">
+                +
+            </NavLink>
+            <NavLink
+                to={`/addcard?deck=${deck}`}
+                className="w-full text-center appear2 glassomorph1 text-white font-semibold text-lg rounded-lg border-solid border-[1px] p-2">
+                More Options
+            </NavLink>
             { deck !== undefined &&
               <>
                   {
@@ -50,11 +60,6 @@ export const Cards = () => {
                   }
               </>
             }
-            <NavLink
-                to={`/addcard?deck=${deck}`}
-                className="w-full text-center appear2 glassomorph1 text-white font-semibold text-lg rounded-lg border-solid border-[1px] p-2">
-                +
-            </NavLink>
         </section>
     )
 }
