@@ -42,7 +42,7 @@ export const Cards = () => {
                 +
             </NavLink>
             <NavLink
-                to={`/addcard?deck=${deck}`}
+                to={`/more?deck=${deck}`}
                 className="w-full text-center appear2 glassomorph1 text-white font-semibold text-lg rounded-lg border-solid border-[1px] p-2">
                 More Options
             </NavLink>
