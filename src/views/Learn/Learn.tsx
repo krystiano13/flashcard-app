@@ -1,8 +1,9 @@
 import React, { useEffect, useContext, useState } from "react";
 import { SearchBar } from "../../components/Home/SearchBar";
 import { SearchContext } from "../../contexts/SearchContext";
-import {  DeckContext } from "../../contexts/DeckContext";
+import { DeckContext } from "../../contexts/DeckContext";
 import { DeckCard } from "../../components/Home/DeckCard";
+import { useNavigate } from "react-router";
 import type { deck } from "../../types/types";
 
 export const Learn = ( ) => {
@@ -11,11 +12,13 @@ export const Learn = ( ) => {
     const decks = useContext(DeckContext);
     const search = useContext(SearchContext);
 
+    const navigate = useNavigate();
+
     const calculateCardsToSee = () => {
         const decksArray: deck[] = decks;
         const newDeckArray = decksArray.filter(item =>
             item.cards.some(el => el.whenToSee - (new Date()).getTime() <= 0));
-        setDecksToSee(decksArray);
+        setDecksToSee(newDeckArray);
 
         // calculate cards to see
         const cardsArray: number[] = [];
@@ -54,7 +57,7 @@ export const Learn = ( ) => {
                     decksToSee.length >= 1 &&
                     <>
                         {
-                            (decks.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
+                            (decksToSee.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
                                 <DeckCard
                                     onClick={() => {}}
                                     key={item.id}
