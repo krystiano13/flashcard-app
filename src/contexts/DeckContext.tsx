@@ -39,7 +39,6 @@ export function DeckContextProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        console.log(decks);
         setData(decks).then(() => calculateCardsToSee());
     }, [decks]);
 
