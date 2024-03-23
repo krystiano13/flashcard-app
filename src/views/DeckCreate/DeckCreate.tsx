@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router";
+import { useSearchParams } from 'react-router-dom';
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Modal } from "../../components/DeckCreate/Modal";
 import { Form } from "../../components/DeckCreate/Form";
 
 interface Props {
-    setDeck: (id:number) => void
+    setDeck: (id:number) => void,
 }
 
 export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
@@ -16,10 +17,32 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [modal, setModal] = useState<boolean>(false);
     const [newDeck, setNewDeck] = useState<number>(0);
+    const [params, setParams] = useSearchParams();
 
     const navigate = useNavigate();
 
-    async function handleSubmit(e: React.FormEvent) {
+    async function editDeck(e: React.FormEvent) {
+        e.preventDefault();
+        const data = new FormData(e.target as HTMLFormElement);
+
+        if(params.get('deck')) return;
+
+        setLoading(true);
+
+        (
+            async () => new Promise(resolve => {
+                const decks = [...deckContext];
+                decks[Number(params.get('deck'))].title = data.get('deck') as string;
+                deckSave(decks);
+                resolve('resolved');
+            })
+        )().then(() => {
+            setLoading(false);
+            setModal(true);
+        })
+    }
+
+    async function addDeck(e: React.FormEvent) {
         e.preventDefault();
         const data = new FormData(e.target as HTMLFormElement);
 
@@ -62,7 +85,8 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
                         loading && <Spinner />
                     }
                     {
-                        !loading && <Form mode="deck" handleSubmit={handleSubmit} />
+                        !loading && 
+                        <Form cardMode='add' mode="deck" handleSubmit={params.get('deck') ? editDeck : addDeck} />
                     }
                 </>
             }
