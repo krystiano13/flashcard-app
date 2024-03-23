@@ -3,12 +3,13 @@ import React from "react";
 interface Props {
     handleSubmit: (e: React.FormEvent) => Promise<void>,
     mode: 'deck'|'card',
+    defaultDeckValue: string|undefined,
     cardMode: 'edit'|'add',
     oneSide?: string|null,
     secondSide?: string|null
 }
 
-export const Form:React.FC<Props> = ({ handleSubmit, mode, cardMode, oneSide, secondSide }) => {
+export const Form:React.FC<Props> = ({ handleSubmit, mode, cardMode, oneSide, secondSide, defaultDeckValue }) => {
     return (
         <form onSubmit={handleSubmit}
               className="w-[90%] md:w-[70%] p-3 gap-12 md:gap-24 rounded-lg flex flex-col justify-center items-center appear2">
@@ -19,6 +20,7 @@ export const Form:React.FC<Props> = ({ handleSubmit, mode, cardMode, oneSide, se
                     w-full bg-transparent text-lg md:text-3xl pb-2 md:pb-4 text-white outline-0
                     border-b-solid border-b-[1px] border-white "
                     placeholder="Your deck name"
+                    defaultValue={defaultDeckValue ? defaultDeckValue : ""}
                     name="deck"
                     type="text"
                     required
