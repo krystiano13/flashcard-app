@@ -34,7 +34,6 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
                 const decks = [...deckContext];
                 decks[Number(params.get('deck'))].title = data.get('deck') as string;
                 deckSave(decks);
-                console.log(decks);
                 resolve('resolved');
             })
         )().then(() => {
@@ -87,7 +86,11 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
                     }
                     {
                         !loading && 
-                        <Form cardMode='add' mode="deck" handleSubmit={params.get('deck') ? editDeck : addDeck} />
+                        <Form 
+                            cardMode={params.get('deck') ? "edit" : "add"}
+                            mode="deck" 
+                            handleSubmit={params.get('deck') ? editDeck : addDeck} 
+                        />
                     }
                 </>
             }
