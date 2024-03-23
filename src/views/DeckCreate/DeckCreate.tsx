@@ -25,7 +25,7 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
         e.preventDefault();
         const data = new FormData(e.target as HTMLFormElement);
 
-        if(params.get('deck')) return;
+        if(!params.get('deck')) return;
 
         setLoading(true);
 
@@ -34,6 +34,7 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
                 const decks = [...deckContext];
                 decks[Number(params.get('deck'))].title = data.get('deck') as string;
                 deckSave(decks);
+                console.log(decks);
                 resolve('resolved');
             })
         )().then(() => {
