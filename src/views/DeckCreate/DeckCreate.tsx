@@ -88,7 +88,7 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
                         !loading && 
                         <Form 
                             cardMode={params.get('deck') ? "edit" : "add"}
-                            defaultDeckValue={deckContext[Number(params.get('deck'))].title}
+                            defaultDeckValue={deckContext[Number(params.get('deck'))] ? deckContext[Number(params.get('deck'))].title : ""}
                             mode="deck" 
                             handleSubmit={params.get('deck') ? editDeck : addDeck} 
                         />

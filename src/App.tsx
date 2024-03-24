@@ -9,6 +9,7 @@ import { MoreOptions } from "./views/MoreOptions/MoreOptions";
 import { Nav } from "./components/Nav";
 import { DeckContextProvider } from "./contexts/DeckContext";
 import { SearchContextProvider } from "./contexts/SearchContext";
+import { Review } from "./views/Review/Review";
 
 function App () {
     const [deck, setDeck] = useState<number|undefined>();
@@ -20,6 +21,7 @@ function App () {
                       <Routes>
                           <Route path="/" element={<Home setDeck={(value:number) => setDeck(value)} />} />
                           <Route path="/learn" element={<Learn />} />
+                          <Route path="/review" element={<Review />} />
                           <Route path="/create" element={<DeckCreate setDeck={(id:number) => setDeck(id)} />} />
                           <Route path="/cards" element={<Cards />} />
                           <Route path="/addcard" element={<AddCard />} />
