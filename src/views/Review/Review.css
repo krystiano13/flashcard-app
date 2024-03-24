@@ -1,0 +1,22 @@
+#oneside, #secondside {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: transform 500ms;
+    will-change: transform;
+}
+
+.flip1 {
+    transform: perspective(900px) rotateY(0deg);
+}
+
+.flip2 {
+    transform: perspective(900px) rotateY(180deg);
+}
+
+.flip3 {
+    transform: perspective(900px) rotateY(-180deg);
+}
+
+.flip4 {
+    transform: perspective(900px) rotate(0deg);
+}
