@@ -1,2 +1,8 @@
 # Flashcard App
-Coming soon ...
+## Tech Stack:
+* Capacitor.js
+* React.js
+* Typescript
+* HTML
+* CSS
+* TailwindCSS
