@@ -26,8 +26,8 @@ export function Review() {
                     </p>
                 </section>
             </div> 
-            <div id="review" className={`fixed w-[100vw] flex flex-col items-center justify-end h-[80vh] pointer-events-none`}>
-                <button className={`transition bg-purple-600 text-white p-2 ${!reviewBtn && 'translate-y-[100vh]'}`}>Review</button>
+            <div id="review" className={`fixed w-[100vw] flex flex-col items-center justify-end h-[85vh] pointer-events-none`}>
+                <button className={`transition bg-primary-dark w-4/5 text-white p-2 ${!reviewBtn && 'translate-y-[100vh]'}`}>Review</button>
             </div>
         </section>
     )

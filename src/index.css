@@ -89,7 +89,8 @@
 }
 
 .bg-primary-dark {
-    background: rgba(166, 161, 216, 0.1);
+    background: rgb(43, 42, 58);
+    border: solid 1px rgba(166, 161, 216, 0.3);
 }
 
 .glassomorph1 {
