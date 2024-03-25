@@ -31,15 +31,17 @@ export function Review() {
             </button>
             {
                 reviewButtons &&
-                <section id="review-buttons">
-                    <h2>Did you remember the answer ?</h2>
-                    <button className={`md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                <section id="review-buttons"
+                    className="appear1 fixed w-full h-full flex flex-col items-center justify-center gap-6 glassomorph1"
+                >
+                    <h2 className="text-white font-semibold text-lg md:text-2xl">Did you remember the answer ?</h2>
+                    <button className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         No
                     </button>
-                    <button className={`md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                    <button className={`md:text-2xl text-xl bg-orange-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         Partially
                     </button>
-                    <button className={`md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                    <button className={`md:text-2xl text-xl bg-emerald-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         Yes
                     </button>
                 </section>
