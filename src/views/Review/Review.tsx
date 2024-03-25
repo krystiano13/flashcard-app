@@ -29,6 +29,21 @@ export function Review() {
             <button className={`fixed transition md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3 ${reviewBtn && 'translate-y-[40vh]'} ${!reviewBtn && 'translate-y-[100vh]'}`}>
                 Review
             </button>
+            {
+                reviewButtons &&
+                <section id="review-buttons">
+                    <h2>Did you remember the answer ?</h2>
+                    <button className={`md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                        No
+                    </button>
+                    <button className={`md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                        Partially
+                    </button>
+                    <button className={`md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                        Yes
+                    </button>
+                </section>
+            }
         </section>
     )
 }
