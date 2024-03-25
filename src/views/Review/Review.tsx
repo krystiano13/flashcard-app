@@ -12,6 +12,11 @@ export function Review() {
         }
     }, [flip]);
 
+    function startReview() {
+        setReviewBtn(false);
+        setReviewButtons(true);
+    }
+
     return (
         <section id="content" className="h-[90vh] p-3 flex justify-center items-center">
             <div onClick={() => setFlip(true)} id="card" className="w-[80%] h-auto min-h-[70vh] relative">
@@ -26,7 +31,7 @@ export function Review() {
                     </p>
                 </section>
             </div> 
-            <button className={`fixed transition md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3 ${reviewBtn && 'translate-y-[40vh]'} ${!reviewBtn && 'translate-y-[100vh]'}`}>
+            <button onClick={startReview} className={`fixed transition md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3 ${reviewBtn && 'translate-y-[40vh]'} ${!reviewBtn && 'translate-y-[100vh]'}`}>
                 Review
             </button>
             {
