@@ -88,6 +88,10 @@
     background: linear-gradient(45deg, #6A60C8DD, #37307DDD);
 }
 
+.bg-primary-dark {
+    background: rgba(166, 161, 216, 0.1);
+}
+
 .glassomorph1 {
     background: rgba(166, 161, 216, 0.1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

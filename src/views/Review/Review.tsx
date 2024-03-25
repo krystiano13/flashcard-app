@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Review.css';
 
 export function Review() {
     const [ flip, setFlip ] = useState<boolean>(false);
+    const [ reviewBtn, setReviewBtn ] = useState<boolean>(false);
+    const [ reviewButtons, setReviewButtons ] = useState<boolean>(false);
+
+    useEffect(() => {
+        if(flip) {
+            setTimeout(() => setReviewBtn(true), 1000);
+        }
+    }, [flip]);
 
     return (
         <section id="content" className="h-[90vh] p-3 flex justify-center items-center">
@@ -18,6 +26,9 @@ export function Review() {
                     </p>
                 </section>
             </div> 
+            <div id="review" className={`fixed w-[100vw] flex flex-col items-center justify-end h-[80vh] pointer-events-none`}>
+                <button className={`transition bg-purple-600 text-white p-2 ${!reviewBtn && 'translate-y-[100vh]'}`}>Review</button>
+            </div>
         </section>
     )
 }
