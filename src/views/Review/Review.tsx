@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import type { deck } from "../../types/types";
 import './Review.css';
 
 export function Review() {
     const [ flip, setFlip ] = useState<boolean>(false);
     const [ reviewBtn, setReviewBtn ] = useState<boolean>(false);
     const [ reviewButtons, setReviewButtons ] = useState<boolean>(false);
+    const [ deck, setDeck ] = useState<deck>();
+
+    const [params, setParams] = useSearchParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!params.get('deck')) {
+            navigate('/learn');
+        }
+
+        const data:deck = JSON.parse(params.get('deck') as string);
+        setDeck(data);
+    }, []);
 
     useEffect(() => {
         if(flip) {
