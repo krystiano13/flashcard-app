@@ -33,6 +33,18 @@ export function Review() {
         setReviewButtons(true);
     }
 
+    function nextCard() {
+        if(!deck) return;
+        if(deck?.cards.length > cardID + 1) {
+           setCardID(prev => prev + 1);
+           setFlip(false);
+           setReviewBtn(false);
+           setTimeout(() => {
+            setReviewButtons(false);
+           }, 500)
+        }
+    }
+
     return (
         <section id="content" className="h-[90vh] p-3 flex justify-center items-center">
             <div onClick={() => setFlip(true)} id="card" className="w-[80%] h-auto min-h-[70vh] relative">
@@ -56,7 +68,7 @@ export function Review() {
                     className="appear1 fixed w-full h-full flex flex-col items-center justify-center gap-6 glassomorph1"
                 >
                     <h2 className="text-white font-semibold text-lg md:text-2xl">Did you remember the answer ?</h2>
-                    <button className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                    <button onClick={nextCard} className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         No
                     </button>
                     <button className={`md:text-2xl text-xl bg-orange-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
