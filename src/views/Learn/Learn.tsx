@@ -59,7 +59,7 @@ export const Learn = ( ) => {
                         {
                             (decksToSee.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
                                 <DeckCard
-                                    onClick={() => {}}
+                                    onClick={() => navigate('/review')}
                                     key={item.id}
                                     title={item.title}
                                     cardsInDeck={cardsToSee[item.id]}
