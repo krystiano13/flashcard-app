@@ -8,6 +8,7 @@ export function Review() {
     const [ reviewBtn, setReviewBtn ] = useState<boolean>(false);
     const [ reviewButtons, setReviewButtons ] = useState<boolean>(false);
     const [ deck, setDeck ] = useState<deck>();
+    const [ cardID, setCardID ] = useState<number>(0);
 
     const [params, setParams] = useSearchParams();
     const navigate = useNavigate();
@@ -37,12 +38,12 @@ export function Review() {
             <div onClick={() => setFlip(true)} id="card" className="w-[80%] h-auto min-h-[70vh] relative">
                 <section id="oneside" className={`${flip ? "flip3" : "flip1"} w-full p-5 absolute h-full gradient2 rounded-lg overflow-y-auto`}>
                     <p className="text-white text-center text-lg md:text-2xl">
-                        Lorem Ipsum ?
+                        { deck?.cards[cardID].oneSide }
                     </p>
                 </section>
                 <section id="secondside" className={`${flip ? "flip4" : "flip2"} w-full p-5 absolute gradient2 h-full rounded-lg overflow-y-auto`}>
                     <p className="text-white text-center text-lg md:text-2xl">
-                        Dolor ...
+                        { deck?.cards[cardID].secondSide }
                     </p>
                 </section>
             </div> 
