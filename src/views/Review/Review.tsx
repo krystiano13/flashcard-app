@@ -43,6 +43,9 @@ export function Review() {
             setReviewButtons(false);
            }, 500)
         }
+        else {
+            navigate('/learn');
+        }
     }
 
     return (
