@@ -11,6 +11,7 @@ export function Review() {
     const [ reviewButtons, setReviewButtons ] = useState<boolean>(false);
     const [ deck, setDeck ] = useState<deck>();
     const [ cardID, setCardID ] = useState<number>(0);
+    const [ customLearning, setCustomLearning ] = useState<boolean>(false);
 
     const [params, setParams] = useSearchParams();
     const navigate = useNavigate();
@@ -21,6 +22,10 @@ export function Review() {
     useEffect(() => {
         if(!params.get('deck')) {
             navigate('/learn');
+        }
+
+        if(params.get('custom')) {
+            setCustomLearning(true);
         }
 
         const data:deck = JSON.parse(params.get('deck') as string);
@@ -47,22 +52,24 @@ export function Review() {
             setDeck(newDeck);
         }
         else {
-            let multiplier = 0;
+            if(!customLearning) {
+                let multiplier = 0;
 
-            if(isCardRemembered === true) {
-                multiplier = 2;
-            }
-            else {
-                multiplier = 1;
-            }
+                if(isCardRemembered === true) {
+                    multiplier = 2;
+                }
+                else {
+                    multiplier = 1;
+                }
 
-            const card = deck.cards[cardID];
-            const deckID = deckContext.findIndex(item => deck.id === item.id);
-            const cardToChange = deckContext[deckID].cards.findIndex(item => item.id === deck.cards[cardID].id);
-            const newDeck = [...deckContext];
-            newDeck[deckID].cards[cardToChange].whenToSee = new Date(new Date().getTime() + 86400000 * multiplier).getTime();
-            deckSave(newDeck);
-            setData(newDeck);
+                const card = deck.cards[cardID];
+                const deckID = deckContext.findIndex(item => deck.id === item.id);
+                const cardToChange = deckContext[deckID].cards.findIndex(item => item.id === deck.cards[cardID].id);
+                const newDeck = [...deckContext];
+                newDeck[deckID].cards[cardToChange].whenToSee = new Date(new Date().getTime() + 86400000 * multiplier).getTime();
+                deckSave(newDeck);
+                setData(newDeck);
+            }
         }
 
         if(deck?.cards.length > cardID + 1) {
@@ -74,7 +81,12 @@ export function Review() {
            }, 500)
         }
         else {
-            navigate('/learn');
+            if(customLearning) {
+                navigate(`/more?deck=${deck.id}`);
+            }
+            else    {
+                navigate('/learn');
+            }
         }
     }
 
