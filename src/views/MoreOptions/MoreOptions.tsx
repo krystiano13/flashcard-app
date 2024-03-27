@@ -36,6 +36,14 @@ export function MoreOptions() {
            { 
            !loading && 
             <>
+                {
+                    decks[Number(params.get('deck'))].cards.length > 0 &&
+                    <NavLink to={`/review?deck=${JSON.stringify(decks[Number(params.get('deck'))])}`}
+                        className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
+                    >
+                        Custom Learning
+                    </NavLink>
+                }
                 <NavLink to={`/create?deck=${params.get('deck')}`}
                     className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
                 >

@@ -62,9 +62,7 @@ export function Review() {
             const newDeck = [...deckContext];
             newDeck[deckID].cards[cardToChange].whenToSee = new Date(new Date().getTime() + 86400000 * multiplier).getTime();
             deckSave(newDeck);
-            setData(newDeck).then(() => {
-                console.log(getData());
-            });
+            setData(newDeck);
         }
 
         if(deck?.cards.length > cardID + 1) {
