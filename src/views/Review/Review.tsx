@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
-import { setData } from "../../utils/storage";
+import { setData, getData } from "../../utils/storage";
 import type { deck } from "../../types/types";
 import './Review.css';
 
@@ -46,15 +46,25 @@ export function Review() {
             newDeck.cards.push(deck.cards[cardID]);
             setDeck(newDeck);
         }
+        else {
+            let multiplier = 0;
 
-        if(isCardRemembered === "partially"){
+            if(isCardRemembered === true) {
+                multiplier = 2;
+            }
+            else {
+                multiplier = 1;
+            }
+
             const card = deck.cards[cardID];
             const deckID = deckContext.findIndex(item => deck.id === item.id);
             const cardToChange = deckContext[deckID].cards.findIndex(item => item.id === deck.cards[cardID].id);
             const newDeck = [...deckContext];
-            newDeck[deckID].cards[cardToChange].whenToSee = new Date(new Date().getTime() + 86400000).getTime();
+            newDeck[deckID].cards[cardToChange].whenToSee = new Date(new Date().getTime() + 86400000 * multiplier).getTime();
             deckSave(newDeck);
-            setData(newDeck);
+            setData(newDeck).then(() => {
+                console.log(getData());
+            });
         }
 
         if(deck?.cards.length > cardID + 1) {
