@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
+import { setData } from "../../utils/storage";
 import type { deck } from "../../types/types";
 import './Review.css';
 
@@ -12,6 +14,9 @@ export function Review() {
 
     const [params, setParams] = useSearchParams();
     const navigate = useNavigate();
+
+    const deckContext = useContext(DeckContext);
+    const deckSave = useContext(DeckSaveContext);
 
     useEffect(() => {
         if(!params.get('deck')) {
@@ -33,13 +38,23 @@ export function Review() {
         setReviewButtons(true);
     }
 
-    function nextCard(isCardRemembered:boolean) {
+    function nextCard(isCardRemembered:boolean|"partially") {
         if(!deck) return;
 
         if(!isCardRemembered) {
             const newDeck:deck = deck;
             newDeck.cards.push(deck.cards[cardID]);
             setDeck(newDeck);
+        }
+
+        if(isCardRemembered === "partially"){
+            const card = deck.cards[cardID];
+            const deckID = deckContext.findIndex(item => deck.id === item.id);
+            const cardToChange = deckContext[deckID].cards.findIndex(item => item.id === deck.cards[cardID].id);
+            const newDeck = [...deckContext];
+            newDeck[deckID].cards[cardToChange].whenToSee = new Date(new Date().getTime() + 86400000).getTime();
+            deckSave(newDeck);
+            setData(newDeck);
         }
 
         if(deck?.cards.length > cardID + 1) {
@@ -81,7 +96,7 @@ export function Review() {
                     <button onClick={() => nextCard(false)} className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         No
                     </button>
-                    <button onClick={() => nextCard(true)} className={`md:text-2xl text-xl bg-orange-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
+                    <button onClick={() => nextCard("partially")} className={`md:text-2xl text-xl bg-orange-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         Partially
                     </button>
                     <button onClick={() => nextCard(true)} className={`md:text-2xl text-xl bg-emerald-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
