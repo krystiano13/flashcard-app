@@ -30,7 +30,7 @@ export function Nav() {
                 <img src={bookIcon} alt="book icon"/>
             </NavLink>
             <NavLink
-                to="/create"
+                to="/create?deck=-1"
                 className={`nav-button w-14 p-1.5 rounded-xl`}
             >
                 <img src={addIcon} alt="plus icon"/>

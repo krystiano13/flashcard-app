@@ -25,7 +25,7 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
         e.preventDefault();
         const data = new FormData(e.target as HTMLFormElement);
 
-        if(!params.get('deck')) return;
+        if(!params.get('deck') || params.get('deck') === "-1") return;
 
         setLoading(true);
 
@@ -87,10 +87,10 @@ export const DeckCreate:React.FC<Props> = ({ setDeck }) => {
                     {
                         !loading && 
                         <Form 
-                            cardMode={params.get('deck') ? "edit" : "add"}
+                            cardMode={params.get('deck') && params.get('deck') !== "-1" ? "edit" : "add"}
                             defaultDeckValue={deckContext[Number(params.get('deck'))] ? deckContext[Number(params.get('deck'))].title : ""}
                             mode="deck" 
-                            handleSubmit={params.get('deck') ? editDeck : addDeck} 
+                            handleSubmit={params.get('deck') && params.get('deck') !== "-1" ? editDeck : addDeck} 
                         />
                     }
                 </>
