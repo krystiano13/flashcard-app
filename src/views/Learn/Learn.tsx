@@ -41,6 +41,10 @@ export const Learn = ( ) => {
         calculateCardsToSee();
     },[])
 
+    useEffect(() => {
+        console.log(decksToSee)
+    }, [decksToSee])
+
     return (
         <>
             <SearchBar />
@@ -59,7 +63,7 @@ export const Learn = ( ) => {
                         {
                             (decksToSee.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
                                 <DeckCard
-                                    onClick={() => navigate(`/review?deck=${JSON.stringify(decksToSee[item.id])}`)}
+                                    onClick={() => navigate(`/review?deck=${JSON.stringify(item)}`)}
                                     key={item.id}
                                     title={item.title}
                                     cardsInDeck={cardsToSee[item.id]}
