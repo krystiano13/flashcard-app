@@ -10,22 +10,30 @@ export function Settings() {
     function erase() {
         return new Promise(resolve => {
             setDecks([]);
+            setData([]);
             resolve('resolved');
-        })
-        .then(() => {
-            setData(decks);
         })
         .then(() => setModal(false))
     }
 
     return (
         <>
-        <section id="content" className="h-[90vh] p-3 flex flex-col gap-4">
+        <section id="content" className="h-[90vh] p-3 flex flex-col items-center justify-center gap-4">
             <button
                 onClick={() => setModal(true)}
                 className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
             >
                 Erase All Data
+            </button>
+            <button
+                className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
+            >
+                Help
+            </button>
+            <button
+                className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
+            >
+                Change Language
             </button>
         </section>
         {
