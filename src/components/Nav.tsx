@@ -35,11 +35,12 @@ export function Nav() {
             >
                 <img src={addIcon} alt="plus icon"/>
             </NavLink>
-            <button
+            <NavLink
+                to="/settings"
                 className={`nav-button w-14 p-1.5 rounded-xl`}
             >
                 <img src={settingsIcon} alt="settings icon"/>
-            </button>
+            </NavLink>
         </nav>
     )
 }
