@@ -41,5 +41,8 @@ export const lang = {
         sure: ['Are you sure ?', 'Czy jesteś pewien ?'],
         yes: ['Yes', 'Tak'],
         no: ['No', 'Nie']
+    },
+    language: {
+        cancel: ["Cancel", "Anuluj"]
     }
 }
