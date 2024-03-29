@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { SearchContext } from "../../contexts/SearchContext";
 import { DeckContext } from "../../contexts/DeckContext";
-import { LanguageContext } from "../../contexts/LanguageContext";
 
 // components
 import { DeckCard } from "../../components/Home/DeckCard.js";

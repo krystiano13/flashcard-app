@@ -5,12 +5,15 @@ import { DeckContext } from "../../contexts/DeckContext";
 import { DeckCard } from "../../components/Home/DeckCard";
 import { useNavigate } from "react-router";
 import type { deck } from "../../types/types";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { lang } from "../../utils/lang";
 
 export const Learn = ( ) => {
     const [decksToSee, setDecksToSee] = useState<deck[]>([]);
     const [cardsToSee, setCardsToSee] = useState<number[]>([]);
     const decks = useContext(DeckContext);
     const search = useContext(SearchContext);
+    const lan = useContext(LanguageContext);
 
     const navigate = useNavigate();
 
@@ -53,7 +56,7 @@ export const Learn = ( ) => {
                     decksToSee.length < 1 &&
                     <div className="w-full h-full flex justify-center items-center">
                         <p className="text-txt text-center text-xl max-w-[80%]">
-                            You have no cards to check for now
+                            { lang.learn.noCards[lan == "english" ? 0 : 1] }
                         </p>
                     </div>
                 }

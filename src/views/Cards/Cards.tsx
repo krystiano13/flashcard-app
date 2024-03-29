@@ -4,6 +4,8 @@ import { Card } from "../../components/Cards/Card";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { setData } from "../../utils/storage";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { lang } from "../../utils/lang";
 
 
 export const Cards = () => {
@@ -13,6 +15,7 @@ export const Cards = () => {
     const [params, setParams] = useSearchParams();
     const [deck, setDeck] = useState<number>(Number(params.get("deck")));
     const navigate = useNavigate();
+    const lan = useContext(LanguageContext);
 
     async function deleteCard(id:number) {
         const data = deckContext;
@@ -44,7 +47,7 @@ export const Cards = () => {
             <NavLink
                 to={`/more?deck=${deck}`}
                 className="w-full text-center appear2 glassomorph1 text-white font-semibold text-lg rounded-lg border-solid border-[1px] p-2">
-                More Options
+                { lang.cards.moreOptions[lan == "english" ? 0 : 1] }
             </NavLink>
             { deck !== undefined &&
               <>

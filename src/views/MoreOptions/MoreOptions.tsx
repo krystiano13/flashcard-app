@@ -3,6 +3,8 @@ import { useSearchParams, useNavigate, NavLink } from "react-router-dom";
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
 import { setData } from "../../utils/storage";
 import { Spinner } from "../../components/Spinner/Spinner";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { lang } from "../../utils/lang";
 
 export function MoreOptions() {
     const [params, setParams] = useSearchParams();
@@ -11,6 +13,7 @@ export function MoreOptions() {
     const navigate = useNavigate();
     const deckSave = useContext(DeckSaveContext);
     const decks = useContext(DeckContext);
+    const lan = useContext(LanguageContext);
 
     useEffect(() => {
         if(!params.get('deck')) {
@@ -41,13 +44,13 @@ export function MoreOptions() {
                     <NavLink to={`/review?deck=${JSON.stringify(decks[Number(params.get('deck'))])}&custom=1`}
                         className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
                     >
-                        Custom Learning
+                        { lang.cards.custom[lan == "english" ? 0 : 1] }
                     </NavLink>
                 }
                 <NavLink to={`/create?deck=${params.get('deck')}`}
                     className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
                 >
-                    Rename Deck
+                    { lang.cards.rename[lan == "english" ? 0 : 1] }
                 </NavLink>
                 <button
                     onClick={() => {deleteDeck().then(() => {
@@ -56,12 +59,12 @@ export function MoreOptions() {
                     })}}
                     className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
                 >
-                    Delete Deck
+                    { lang.cards.deleteDeck[lan == "english" ? 0 : 1] }
                 </button>
                 <NavLink to="/"
                     className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
                 >
-                    Go Back
+                    { lang.cards.back[lan == "english" ? 0 : 1] }
                 </NavLink>
            </> 
            }

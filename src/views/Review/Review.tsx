@@ -3,6 +3,8 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
 import { setData, getData } from "../../utils/storage";
 import type { deck } from "../../types/types";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { lang } from "../../utils/lang";
 import './Review.css';
 
 export function Review() {
@@ -18,6 +20,7 @@ export function Review() {
 
     const deckContext = useContext(DeckContext);
     const deckSave = useContext(DeckSaveContext);
+    const lan = useContext(LanguageContext);
 
     useEffect(() => {
         if(!params.get('deck')) {
@@ -105,7 +108,7 @@ export function Review() {
                 </section>
             </div> 
             <button onClick={startReview} className={`fixed transition md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3 ${reviewBtn && 'translate-y-[40vh]'} ${!reviewBtn && 'translate-y-[100vh]'}`}>
-                Review
+                { lang.learn.review[lan == "english" ? 0 : 1] }
             </button>
             {
                 reviewButtons &&
@@ -114,13 +117,13 @@ export function Review() {
                 >
                     <h2 className="text-white font-semibold text-lg md:text-2xl">Did you remember the answer ?</h2>
                     <button onClick={() => nextCard(false)} className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
-                        No
+                        { lang.learn.no[lan == "english" ? 0 : 1] }
                     </button>
                     <button onClick={() => nextCard("partially")} className={`md:text-2xl text-xl bg-orange-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
-                        Partially
+                        { lang.learn.partially[lan == "english" ? 0 : 1] }
                     </button>
                     <button onClick={() => nextCard(true)} className={`md:text-2xl text-xl bg-emerald-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
-                        Yes
+                        { lang.learn.yes[lan == "english" ? 0 : 1] }
                     </button>
                 </section>
             }
