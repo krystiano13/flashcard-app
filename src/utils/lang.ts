@@ -11,5 +11,14 @@ export const lang = {
         no: ['No', 'Nie'],
         partially: ['Partially', 'Częściowo'],
         yes: ['Yes', 'Tak']
-    }
+    },
+    deckCreate: {
+        name: ['Your deck name', 'Nazwa talii'],
+        create: ['Create', 'Stwórz'],
+        edit: ['Edit', 'Edytuj'],
+        addCards: ['Would you like to add cards to this deck now ?','Chciałbyś teraz dodać karty do tej talii ?`'],
+        yes: ['Yes', 'Tak'],
+        no: ['No', 'Nie']
+    },
+    
 }
