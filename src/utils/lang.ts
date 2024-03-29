@@ -20,5 +20,18 @@ export const lang = {
         yes: ['Yes', 'Tak'],
         no: ['No', 'Nie']
     },
-    
+    cards: {
+        moreOptions: ['More Options', 'Więcej Opcji'],
+        custom: ['Custom Learning', 'Nauka Niestandardowa'],
+        rename: ['Rename Deck', 'Zmień Nazwę Talii'],
+        deleteDeck: ['Delete Deck', 'Usuń Talię'],
+        back: ['Go Back', 'Cofnij'],
+        edit: ['Edit', 'Edytuj'],
+        delete: ['Delete', 'Usuń'],
+    },
+    addCard: {
+        firstSide: ["Card's first side", 'Piersza strona karty'],
+        secondSide: ["Card's second side", 'Druga strona karty'],
+        create: ['Create', 'Dodaj']
+    }
 }
