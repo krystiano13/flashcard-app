@@ -33,5 +33,13 @@ export const lang = {
         firstSide: ["Card's first side", 'Piersza strona karty'],
         secondSide: ["Card's second side", 'Druga strona karty'],
         create: ['Create', 'Dodaj']
+    },
+    settings: {
+        erase: ['Erase All Data', 'Wyczyść wszystkie dane'],
+        help: ['Help', 'Pomoc'],
+        language: ['Change Language', 'Zmień Język'],
+        sure: ['Are you sure ?', 'Czy jesteś pewien ?'],
+        yes: ['Yes', 'Tak'],
+        no: ['No', 'Nie']
     }
 }
