@@ -1,6 +1,8 @@
 // react imports
 import React, { useContext, useState } from "react";
 import { SearchSetterContext} from "../../contexts/SearchContext";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { lang } from "../../utils/lang";
 
 // libs
 import { debounce } from "../../utils/debounce";
@@ -12,6 +14,7 @@ import searchIcon from '../../../public/icons/search-icon.svg';
 export function SearchBar() {
     const [searchOpen, setSearchOpen] = useState<boolean>(false);
     const searchSetterContext = useContext(SearchSetterContext);
+    const lan = useContext(LanguageContext);
     return (
         <section id="search" className="w-[100vw] h-[10vh] bg flex items-center justify-between p-5">
             <form>
@@ -24,7 +27,7 @@ export function SearchBar() {
                         `}
                     name="deck"
                     type="text"
-                    placeholder="deck name..."
+                    placeholder={`${lang.home.name[lan == "english" ? 0 : 1]}...`}
                     onChange={debounce((e) => {
                         searchSetterContext(e.target.value)
                     },600)}
