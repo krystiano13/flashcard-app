@@ -9,6 +9,7 @@ import { MoreOptions } from "./views/MoreOptions/MoreOptions";
 import { Nav } from "./components/Nav";
 import { DeckContextProvider } from "./contexts/DeckContext";
 import { SearchContextProvider } from "./contexts/SearchContext";
+import { LanguageContextProvider } from "./contexts/LanguageContext";
 import { Review } from "./views/Review/Review";
 import { Settings } from './views/Settings/Settings';
 import { Language } from "./views/Settings/Language/Language";
@@ -19,7 +20,8 @@ function App () {
       <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
           <DeckContextProvider>
               <SearchContextProvider>
-                  <BrowserRouter>
+                <LanguageContextProvider>
+                <BrowserRouter>
                       <Routes>
                           <Route path="/" element={<Home setDeck={(value:number) => setDeck(value)} />} />
                           <Route path="/learn" element={<Learn />} />
@@ -33,6 +35,7 @@ function App () {
                       </Routes>
                       <Nav />
                   </BrowserRouter>
+                </LanguageContextProvider>
               </SearchContextProvider>
           </DeckContextProvider>
       </main>
