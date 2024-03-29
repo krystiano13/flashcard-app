@@ -115,7 +115,9 @@ export function Review() {
                 <section id="review-buttons"
                     className="appear1 fixed w-full h-full flex flex-col items-center justify-center gap-6 glassomorph1"
                 >
-                    <h2 className="text-white font-semibold text-lg md:text-2xl">Did you remember the answer ?</h2>
+                    <h2 className="text-white font-semibold text-lg md:text-2xl">
+                        { lang.learn.remember[lan == "english" ? 0 : 1] }
+                    </h2>
                     <button onClick={() => nextCard(false)} className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         { lang.learn.no[lan == "english" ? 0 : 1] }
                     </button>
