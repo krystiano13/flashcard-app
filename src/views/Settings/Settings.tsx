@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
 import { setData } from "../../utils/storage";
+import { NavLink } from "react-router-dom";
 
 export function Settings() {
     const [modal, setModal] = useState<boolean>(false);
@@ -30,11 +31,12 @@ export function Settings() {
             >
                 Help
             </button>
-            <button
+            <NavLink
+                to="/settings/language"
                 className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
             >
                 Change Language
-            </button>
+            </NavLink>
         </section>
         {
             modal &&
