@@ -18,11 +18,12 @@ export async function getData():Promise<deck[]> {
 }
 
 export async function getLanguage():Promise<string> {
-    if(!Preferences.get({ key: "lang" })) {
-        return "english;"
+    const data = await Preferences.get({ key: 'lang' });
+    
+    if(!data.value) {
+        return "english";
     }
 
-    const data = await Preferences.get({ key: 'lang' });
     return JSON.parse(data.value as string);
 }
 
