@@ -27,16 +27,16 @@ export const helpData = [
     {
         title: ["Learn Section", "Sekcja Nauki"],
         description: [
-            "",
-            ""
+            "In the learning section, you can browse cards that require a reminder.",
+            "W sekcji nauki możesz przeglądać karty, które wymagają przypomnienia"
         ],
         icon: bookIcon
     },
     {
         title: ["Creation Section", "Sekcja Tworzenia"],
         description: [
-            "In the learning section, you can browse cards that require a reminder.",
-            "W sekcji nauki możesz przeglądać karty, które wymagają przypomnienia"
+            "In the creation section, you can create new decks of cards.",
+            "W sekcji tworzenia możesz tworzyć nowe talie kart"
         ],
         icon: addIcon
     },
