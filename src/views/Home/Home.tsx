@@ -1,12 +1,14 @@
 // react imports
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { useSearchParams } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchContext";
 import { DeckContext } from "../../contexts/DeckContext";
 
 // components
 import { DeckCard } from "../../components/Home/DeckCard.js";
 import { SearchBar } from "../../components/Home/SearchBar";
+import { Help } from "../../components/Home/Help";
 
 interface Props {
     setDeck: (value:number) => void
@@ -17,6 +19,9 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
     const search = useContext(SearchContext);
 
     const navigate = useNavigate();
+
+    const [params,setParams] = useSearchParams();
+    const [help,setHelp] = useState<boolean>(true);
 
     return (
         <>
@@ -37,6 +42,9 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
                     ))
                 }
             </section>
+            {
+                help && <Help />
+            }
         </>
     )
 }
