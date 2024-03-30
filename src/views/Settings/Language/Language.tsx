@@ -2,16 +2,17 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { LanguageContext, LanguageSetContext } from "../../../contexts/LanguageContext";
 import { lang } from "../../../utils/lang";
+import { setLanguage } from "../../../utils/storage";
 
 export function Language() {
     const lan = useContext(LanguageContext);
-    const setLanguage = useContext(LanguageSetContext);
+    const setLang = useContext(LanguageSetContext);
 
     const navigate = useNavigate();
 
     function changeLanguage(lang:"polish"|"english") {
-        setLanguage(lang);
-        navigate('/settings');
+        setLang(lang);
+        setLanguage(lang).then(() => navigate('/settings'));
     }
 
     return (
