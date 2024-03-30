@@ -13,6 +13,7 @@ export function Help() {
         >
             <div className="w-[70%] min-h-[50%] md:w-[70%] appear2 flex flex-col items-start gap-3 md:gap-5 lg:gap-7 glassomorph1 text-white font-semibold rounded-lg border-solid border-[1px] p-2 md:p-4 lg:p-6">
                 <h2 className="text-2xl md:text-4xl lg:text-5xl">{ helpData[page].title[lan == "english" ? 0 : 1] }</h2>
+                { page > 0 && <img className="w-1/4" src={helpData[page].icon} alt="icon" /> }
                 <p className="font-light text-lg md:text-3xl lg:text-4xl">
                     { helpData[page].description[lan == "english" ? 0 : 1] }
                 </p>
@@ -22,7 +23,7 @@ export function Help() {
                         onClick={() => setPage(prev => prev + 1)}
                         className="gradient1 font-semibold w-[90%] md:rounded-lg
                         text-white md:text-xl p-2 md:p-3 pl-6 md:pl-9 pr-6 md:pr-9 rounded-xl">
-                        Next
+                        { lan == "english" ? "Next" : "Dalej" }
                     </button>
                 }
                  {
@@ -30,7 +31,7 @@ export function Help() {
                     <button
                         className="gradient1 font-semibold w-[90%] md:rounded-lg
                         text-white md:text-xl p-2 md:p-3 pl-6 md:pl-9 pr-6 md:pr-9 rounded-xl">
-                        Close
+                        { lan == "english" ? "Close" : "Zamknij" }
                     </button>
                 }
             </div>
