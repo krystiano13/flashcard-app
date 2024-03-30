@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { helpData } from "../../utils/helpData";
-import { lang } from "../../utils/lang";
 import { LanguageContext } from "../../contexts/LanguageContext";
 
 interface Props {
