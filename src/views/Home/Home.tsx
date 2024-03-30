@@ -1,9 +1,11 @@
 // react imports
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchContext";
 import { DeckContext } from "../../contexts/DeckContext";
+
+import { setHelpData, getHelpData } from "../../utils/storage";
 
 // components
 import { DeckCard } from "../../components/Home/DeckCard.js";
@@ -21,7 +23,19 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
     const navigate = useNavigate();
 
     const [params,setParams] = useSearchParams();
-    const [help,setHelp] = useState<boolean>(true);
+    const [help,setHelp] = useState<boolean>(false);
+
+    useEffect(() => {
+        getHelpData().then(value => {
+            if(value === 0) {
+                setHelp(true);
+                setHelpData();
+            }
+            if(value === 1) {
+                setHelp(false);
+            }
+        })
+    }, []);
 
     return (
         <>

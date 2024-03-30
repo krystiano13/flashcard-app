@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const LanguageContextProvider:React.FC<Props> = ({ children }) => {
-    const [language, setLanguage] = useState("polish");
+    const [language, setLanguage] = useState("english");
 
     return (
         <LanguageContext.Provider value={language}>
