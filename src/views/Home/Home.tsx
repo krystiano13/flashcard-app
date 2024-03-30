@@ -43,7 +43,7 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
                 }
             </section>
             {
-                help && <Help />
+                help && <Help close={() => setHelp(false)} />
             }
         </>
     )

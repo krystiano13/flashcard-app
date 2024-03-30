@@ -3,7 +3,11 @@ import { helpData } from "../../utils/helpData";
 import { lang } from "../../utils/lang";
 import { LanguageContext } from "../../contexts/LanguageContext";
 
-export function Help() {
+interface Props {
+    close: () => void
+}
+
+export const Help:React.FC<Props> = ({ close }) => {
     const [page, setPage] = useState<number>(0);
     const lan = useContext(LanguageContext);
 
@@ -29,6 +33,7 @@ export function Help() {
                  {
                     page === helpData.length - 1 &&
                     <button
+                        onClick={close}
                         className="gradient1 font-semibold w-[90%] md:rounded-lg
                         text-white md:text-xl p-2 md:p-3 pl-6 md:pl-9 pr-6 md:pr-9 rounded-xl">
                         { lan == "english" ? "Close" : "Zamknij" }
