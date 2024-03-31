@@ -1,5 +1,5 @@
 # Flashcard App
-## Tech Stack:
+## Tech Stack :
 * Capacitor.js
 * React.js
 * Typescript
