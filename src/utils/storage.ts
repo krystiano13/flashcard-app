@@ -17,14 +17,9 @@ export async function getData():Promise<deck[]> {
     return JSON.parse(data.value as string) as deck[];
 }
 
-export async function getLanguage():Promise<string> {
+export async function getLanguage():Promise<"polish"|"english"> {
     const data = await Preferences.get({ key: 'lang' });
-    
-    if(!data.value) {
-        return "english";
-    }
-
-    return JSON.parse(data.value as string);
+    return data.value as "polish"|"english"
 }
 
 export async function setLanguage(lang:"english"|"polish") {

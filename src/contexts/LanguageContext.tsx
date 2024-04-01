@@ -1,6 +1,7 @@
 import React, { ReactNode, createContext, useState } from "react";
 import { useEffect } from "react";
 import { getLanguage } from "../utils/storage";
+import { setLanguage as setLang } from "../utils/storage";
 
 export const LanguageContext = createContext("english");
 export const LanguageSetContext = createContext((lang:string) => {});
@@ -15,6 +16,10 @@ export const LanguageContextProvider:React.FC<Props> = ({ children }) => {
     useEffect(() => {
         getLanguage().then(value => setLanguage(value));
     }, []);
+
+    useEffect(() => {
+        setLang(language as "polish"|"english");
+    }, [language]);
 
     return (
         <LanguageContext.Provider value={language}>

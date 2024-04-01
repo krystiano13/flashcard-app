@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchContext";
 import { DeckContext } from "../../contexts/DeckContext";
-
+import { LanguageContext } from "../../contexts/LanguageContext";
 import { setHelpData, getHelpData } from "../../utils/storage";
 
 // components
@@ -19,6 +19,7 @@ interface Props {
 export const Home:React.FC<Props> = ({ setDeck }) => {
     const decks = useContext(DeckContext);
     const search = useContext(SearchContext);
+    const lang = useContext(LanguageContext);
 
     const navigate = useNavigate();
 
