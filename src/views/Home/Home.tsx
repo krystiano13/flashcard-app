@@ -27,15 +27,22 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
     const [help,setHelp] = useState<boolean>(false);
 
     useEffect(() => {
-        getHelpData().then(value => {
-            if(value === 0) {
-                setHelp(true);
-                setHelpData();
-            }
-            if(value === 1) {
-                setHelp(false);
-            }
-        })
+        if(params.get("help") === "1") {
+            setHelp(true);
+            setHelpData();
+        }
+        else {
+            getHelpData().then(value => {
+                if(value === 0) {
+                    setHelp(true);
+                    setHelpData();
+                }
+                if(value === 1) {
+                    setHelp(false);
+                }
+            })
+        }
+
     }, []);
 
     return (

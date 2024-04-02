@@ -29,11 +29,12 @@ export function Settings() {
             >
                 { lang.settings.erase[lan == "english" ? 0 : 1] }
             </button>
-            <button
+            <NavLink
+                to="/?help=1"
                 className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
             >
                 { lang.settings.help[lan == "english" ? 0 : 1] }
-            </button>
+            </NavLink>
             <NavLink
                 to="/settings/language"
                 className="w-full md:w-[70%] text-center appear2 glassomorph1 text-white font-semibold text-lg md:text-2xl rounded-lg border-solid border-[1px] p-2"
