@@ -19,7 +19,7 @@ export async function getData():Promise<deck[]> {
 
 export async function getLanguage():Promise<"polish"|"english"> {
     const data = await Preferences.get({ key: 'lang' });
-    return data.value as "polish"|"english"
+    return data.value as "english"|"polish"
 }
 
 export async function setLanguage(lang:"english"|"polish") {
