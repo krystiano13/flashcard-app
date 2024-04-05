@@ -1,4 +1,5 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
+import { initialize } from "./utils/admob";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home/Home";
 import { Learn } from "./views/Learn/Learn";
@@ -16,6 +17,11 @@ import { Language } from "./views/Settings/Language/Language";
 
 function App () {
     const [deck, setDeck] = useState<number|undefined>();
+
+    useEffect(() => {
+        initialize();
+    }, [])
+
     return (
       <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
           <DeckContextProvider>
