@@ -1,4 +1,4 @@
-import { AdMob, AdmobConsentStatus } from "@capacitor-community/admob";
+import {AdLoadInfo, AdMob, AdmobConsentStatus, AdOptions, InterstitialAdPluginEvents} from "@capacitor-community/admob";
 
 export async function initialize(): Promise<void> {
     await AdMob.initialize();
@@ -20,4 +20,17 @@ export async function initialize(): Promise<void> {
     ) {
         await AdMob.showConsentForm();
     }
+}
+
+export async function interstitial(): Promise<void> {
+    AdMob.addListener(InterstitialAdPluginEvents.Loaded, (info: AdLoadInfo) => {
+        // Subscribe prepared interstitial
+    });
+
+    const options: AdOptions = {
+        adId: 'ca-app-pub-5851642075240630/9038844003',
+        isTesting: true
+    };
+    await AdMob.prepareInterstitial(options);
+    await AdMob.showInterstitial();
 }

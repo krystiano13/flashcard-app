@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from "react";
-import { initialize } from "./utils/admob";
+import { initialize, interstitial } from "./utils/admob";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home/Home";
 import { Learn } from "./views/Learn/Learn";
@@ -19,7 +19,9 @@ function App () {
     const [deck, setDeck] = useState<number|undefined>();
 
     useEffect(() => {
-        initialize();
+        initialize().then(() => {
+            setTimeout(() => interstitial());
+        })
     }, [])
 
     return (
