@@ -4,5 +4,5 @@
     <string name="title_activity_main">flashcard-app</string>
     <string name="package_name">com.flashcard.krystianzieja</string>
     <string name="custom_url_scheme">com.flashcard.krystianzieja</string>
-    <string name="admob_app_id">[APP_ID]</string>
+    <string name="admob_app_id">ca-app-pub-5851642075240630~6254049948</string>
 </resources>

@@ -17,7 +17,7 @@ export function DeckContextProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        setData(decks);
+       setData(decks);
     }, [decks]);
 
     return (

@@ -9,16 +9,22 @@ export async function setData(data:deck[]):Promise<void> {
 }
 
 export async function getData():Promise<deck[]> {
-    if(!Preferences.get({ key: 'storage' })) {
+    const data = await Preferences.get({ key: 'storage' });
+
+    if(!data.value) {
         return [] as deck[];
     }
-    
-    const data = await Preferences.get({ key: 'storage' });
+
     return JSON.parse(data.value as string) as deck[];
 }
 
 export async function getLanguage():Promise<"polish"|"english"> {
-    const data = await Preferences.get({ key: 'lang' });
+    const data = await Preferences.get({ key: 'lang1' });
+
+    if(!data.value) {
+        return "english";
+    }
+
     return data.value as "english"|"polish"
 }
 
@@ -30,17 +36,18 @@ export async function setLanguage(lang:"english"|"polish") {
 }
 
 export async function getHelpData():Promise<number> {
-    if(!Preferences.get({ key: 'help' })) {
+    const data = await Preferences.get({ key: 'help' });
+
+    if (!data) {
         return 0;
     }
 
-    const data = await Preferences.get({ key: 'help' });
-    return Number(JSON.parse(data.value as string));
+    return Number(data.value);
 }
 
 export async function setHelpData():Promise<void> {
     await Preferences.set({
         key: 'help',
-        value: JSON.stringify(1)
+        value: String(1)
     });
 }

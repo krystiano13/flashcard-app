@@ -35,14 +35,13 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
             getHelpData().then(value => {
                 if(value === 0) {
                     setHelp(true);
-                    setHelpData();
+                   setHelpData();
                 }
                 if(value === 1) {
-                    setHelp(false);
+                   setHelp(false);
                 }
-            })
+           })
         }
-
     }, []);
 
     return (
