@@ -1,6 +1,6 @@
 {
-  "appId": "com.flashcard.krystianzieja",
-  "appName": "flashcard-app",
+  "appId": "ca-app-pub-5851642075240630~6254049948",
+  "appName": "Flashcards",
   "webDir": "dist",
   "server": {
     "androidScheme": "https"

@@ -14,6 +14,7 @@ import { Review } from "./views/Review/Review";
 import { Settings } from './views/Settings/Settings';
 import { Language } from "./views/Settings/Language/Language";
 
+
 function App () {
     const [deck, setDeck] = useState<number|undefined>();
 

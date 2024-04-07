@@ -6,6 +6,7 @@ import { SearchContext } from "../../contexts/SearchContext";
 import { DeckContext } from "../../contexts/DeckContext";
 import { LanguageContext } from "../../contexts/LanguageContext";
 import { setHelpData, getHelpData } from "../../utils/storage";
+import { initialize, loadAd } from "../../utils/admob";
 
 // components
 import { DeckCard } from "../../components/Home/DeckCard.js";
@@ -27,6 +28,9 @@ export const Home:React.FC<Props> = ({ setDeck }) => {
     const [help,setHelp] = useState<boolean>(false);
 
     useEffect(() => {
+
+        initialize().then(() => loadAd())
+
         if(params.get("help") === "1") {
             setHelp(true);
             setHelpData();
