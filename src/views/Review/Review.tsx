@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { DeckSaveContext, DeckContext } from "../../contexts/DeckContext";
+import { initialize, loadAd } from "../../utils/admob";
 import { setData, getData } from "../../utils/storage";
 import type { deck } from "../../types/types";
 import { LanguageContext } from "../../contexts/LanguageContext";
 import { lang } from "../../utils/lang";
 import './Review.css';
 
-export function Review() {
+interface Props {
+    ad: boolean,
+    adFunc: () => void
+}
+
+export const Review:React.FC<Props> = ({ ad, adFunc }) => {
     const [ flip, setFlip ] = useState<boolean>(false);
     const [ reviewBtn, setReviewBtn ] = useState<boolean>(false);
     const [ reviewButtons, setReviewButtons ] = useState<boolean>(false);
@@ -84,11 +90,25 @@ export function Review() {
            }, 500)
         }
         else {
-            if(customLearning) {
-                navigate(`/more?deck=${deck.id}`);
+            adFunc();
+
+            if(ad) {
+                initialize().then(() => loadAd()).then(() => {
+                    if(customLearning) {
+                        navigate(`/more?deck=${deck.id}`);
+                    }
+                    else {
+                        navigate('/learn');
+                    }
+                })
             }
-            else    {
-                navigate('/learn');
+            else {
+                if(customLearning) {
+                    navigate(`/more?deck=${deck.id}`);
+                }
+                else {
+                    navigate('/learn');
+                }
             }
         }
     }

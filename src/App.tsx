@@ -17,6 +17,7 @@ import { Language } from "./views/Settings/Language/Language";
 
 function App () {
     const [deck, setDeck] = useState<number|undefined>();
+    const [shouldAdStart, setShouldAdStart] = useState<boolean>(false);
 
     return (
       <main className="w-[100vw] h-[100vh] bg flex flex-col justify-between">
@@ -27,7 +28,7 @@ function App () {
                       <Routes>
                           <Route path="/" element={<Home setDeck={(value:number) => setDeck(value)} />} />
                           <Route path="/learn" element={<Learn />} />
-                          <Route path="/review" element={<Review />} />
+                          <Route path="/review" element={<Review ad={shouldAdStart} adFunc={() => setShouldAdStart(prev => !prev)} />} />
                           <Route path="/create" element={<DeckCreate setDeck={(id:number) => setDeck(id)} />} />
                           <Route path="/cards" element={<Cards />} />
                           <Route path="/addcard" element={<AddCard />} />
