@@ -33,18 +33,19 @@ export const Review:React.FC<Props> = ({ ad, adFunc }) => {
             navigate('/learn');
         }
 
-        if(params.get('custom')) {
-            setCustomLearning(true);
+        const custom = params.get("custom");
+
+        if(custom === "1") {
+            const data:deck = JSON.parse(params.get('deck') as string);
+            setDeck(data);
+        }
+        else {
+            let data:deck = JSON.parse(params.get('deck') as string);
+            const filtered_cards = data.cards.filter(item => item.whenToSee <= new Date().getTime())
+            data.cards = filtered_cards;
+            setDeck(data);
         }
 
-        let data:deck = JSON.parse(params.get('deck') as string);
-        const cards_filtered = data.cards.filter(item => item.whenToSee <= new Date().getTime())
-
-        if(!customLearning) {
-            data.cards = cards_filtered;
-        }
-
-        setDeck(data);
     }, []);
 
     useEffect(() => {
@@ -121,28 +122,34 @@ export const Review:React.FC<Props> = ({ ad, adFunc }) => {
 
     return (
         <section id="content" className="h-[90vh] p-3 flex justify-center items-center">
-            <div onClick={() => setFlip(true)} id="card" className="w-[80%] h-auto min-h-[70vh] relative">
-                <section id="oneside" className={`${flip ? "flip3" : "flip1"} w-full p-5 absolute h-full gradient2 rounded-lg overflow-y-auto`}>
-                    <p className="text-white text-center text-lg md:text-2xl">
-                        { deck?.cards[cardID].oneSide }
-                    </p>
-                </section>
-                <section id="secondside" className={`${flip ? "flip4" : "flip2"} w-full p-5 absolute gradient2 h-full rounded-lg overflow-y-auto`}>
-                    <p className="text-white text-center text-lg md:text-2xl">
-                        { deck?.cards[cardID].secondSide }
-                    </p>
-                </section>
-            </div> 
-            <button onClick={startReview} className={`fixed transition md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3 ${reviewBtn && 'translate-y-[40vh]'} ${!reviewBtn && 'translate-y-[100vh]'}`}>
-                { lang.learn.review[lan == "english" ? 0 : 1] }
+            {
+                deck !== undefined &&
+                <div onClick={() => setFlip(true)} id="card" className="w-[80%] h-auto min-h-[70vh] relative">
+                    <section id="oneside"
+                             className={`${flip ? "flip3" : "flip1"} w-full p-5 absolute h-full gradient2 rounded-lg overflow-y-auto`}>
+                        <p className="text-white text-center text-lg md:text-2xl">
+                            {deck?.cards[cardID].oneSide}
+                        </p>
+                    </section>
+                    <section id="secondside"
+                             className={`${flip ? "flip4" : "flip2"} w-full p-5 absolute gradient2 h-full rounded-lg overflow-y-auto`}>
+                        <p className="text-white text-center text-lg md:text-2xl">
+                            {deck?.cards[cardID].secondSide}
+                        </p>
+                    </section>
+                </div>
+            }
+            <button onClick={startReview}
+                    className={`fixed transition md:text-xl bg-primary-dark w-4/5 md:w-3/5 text-white p-2 md:p-3 ${reviewBtn && 'translate-y-[40vh]'} ${!reviewBtn && 'translate-y-[100vh]'}`}>
+                {lang.learn.review[lan == "english" ? 0 : 1]}
             </button>
             {
                 reviewButtons &&
                 <section id="review-buttons"
-                    className="appear1 fixed w-full h-full flex flex-col items-center justify-center gap-6 glassomorph1"
+                         className="appear1 fixed w-full h-full flex flex-col items-center justify-center gap-6 glassomorph1"
                 >
                     <h2 className="text-white font-semibold text-lg md:text-2xl">
-                        { lang.learn.remember[lan == "english" ? 0 : 1] }
+                        {lang.learn.remember[lan == "english" ? 0 : 1]}
                     </h2>
                     <button onClick={() => nextCard(false)} className={`md:text-2xl text-xl bg-red-700 w-4/5 md:w-3/5 text-white p-2 md:p-3`}>
                         { lang.learn.no[lan == "english" ? 0 : 1] }
