@@ -37,7 +37,13 @@ export const Review:React.FC<Props> = ({ ad, adFunc }) => {
             setCustomLearning(true);
         }
 
-        const data:deck = JSON.parse(params.get('deck') as string);
+        let data:deck = JSON.parse(params.get('deck') as string);
+        const cards_filtered = data.cards.filter(item => item.whenToSee <= new Date().getTime())
+
+        if(!customLearning) {
+            data.cards = cards_filtered;
+        }
+
         setDeck(data);
     }, []);
 
