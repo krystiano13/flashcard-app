@@ -10,9 +10,14 @@ export function Language() {
 
     const navigate = useNavigate();
 
-    function changeLanguage(lang:"polish"|"english") {
-        setLang(lang);
-        setLanguage(lang).then(() => navigate('/settings'));
+    async function changeLanguage(lang:"polish"|"english") {
+        (async () => new Promise((resolve, reject) => {
+            setLang(lang);
+            resolve("resolved");
+        }))().then(() => {
+            setLanguage(lang);
+            return;
+        }).then(() => navigate("/settings"))
     }
 
     return (

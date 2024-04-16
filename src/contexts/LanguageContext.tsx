@@ -11,19 +11,20 @@ interface Props {
 }
 
 export const LanguageContextProvider:React.FC<Props> = ({ children }) => {
-    const [language, setLanguage] = useState("english");
+    const [language, setLanguage] =
+        useState<"polish"|"english">("english");
 
     useEffect(() => {
-        getLanguage().then(value => setLanguage(value));
+        getLanguage().then(value => {
+            if (value) {
+                setLanguage(value);
+            }
+        });
     }, []);
-
-    useEffect(() => {
-        setLang(language as "polish"|"english");
-    }, [language]);
 
     return (
         <LanguageContext.Provider value={language}>
-            <LanguageSetContext.Provider value={(lang:string) => setLanguage(lang)}>
+            <LanguageSetContext.Provider value={(lang:"polish"|"english") => setLanguage(lang)}>
                 { children }
             </LanguageSetContext.Provider>
         </LanguageContext.Provider>
