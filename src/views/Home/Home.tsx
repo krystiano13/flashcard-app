@@ -13,59 +13,61 @@ import { SearchBar } from "../../components/Home/SearchBar";
 import { Help } from "../../components/Home/Help";
 
 interface Props {
-    setDeck: (value:number) => void
+  setDeck: (value: number) => void;
 }
 
-export const Home:React.FC<Props> = ({ setDeck }) => {
-    const decks = useContext(DeckContext);
-    const search = useContext(SearchContext);
-    const lang = useContext(LanguageContext);
+export const Home: React.FC<Props> = ({ setDeck }) => {
+  const decks = useContext(DeckContext);
+  const search = useContext(SearchContext);
+  const lang = useContext(LanguageContext);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [params,setParams] = useSearchParams();
-    const [help,setHelp] = useState<boolean>(false);
+  const [params, setParams] = useSearchParams();
+  const [help, setHelp] = useState<boolean>(false);
 
-    useEffect(() => {
-        if(params.get("help") === "1") {
-            setHelp(true);
-            setHelpData();
+  useEffect(() => {
+    if (params.get("help") === "1") {
+      setHelp(true);
+      setHelpData();
+    } else {
+      getHelpData().then((value) => {
+        if (value === 0) {
+          setHelp(true);
+          setHelpData();
         }
-        else {
-            getHelpData().then(value => {
-                if(value === 0) {
-                    setHelp(true);
-                   setHelpData();
-                }
-                if(value === 1) {
-                   setHelp(false);
-                }
-           })
+        if (value === 1) {
+          setHelp(false);
         }
-    }, []);
+      });
+    }
+  }, []);
 
-    return (
-        <>
-            <SearchBar />
-            <section id="content" className="h-[80vh] p-3 flex flex-col gap-4 appear1">
-                {
-                    (decks.filter(el => el.title.toLowerCase().includes(search.toLowerCase()))).map(item => (
-                        <DeckCard
-                            onClick={() => {
-                                setDeck(item.id);
-                                navigate(`/cards?deck=${item.id}`);
-                            }}
-                            key={item.id}
-                            title={item.title}
-                            cardsInDeck={item.cardsInDeck}
-                            mode="edit"
-                        />
-                    ))
-                }
-            </section>
-            {
-                help && <Help close={() => setHelp(false)} />
-            }
-        </>
-    )
-}
+  return (
+    <>
+      <SearchBar />
+      <section
+        id="content"
+        className="h-[80vh] p-3 flex flex-col gap-4 appear1 overflow-y-auto"
+      >
+        {decks
+          .filter((el) => el.title.toLowerCase().includes(search.toLowerCase()))
+          .map((item) => (
+            <>
+              <DeckCard
+                onClick={() => {
+                  setDeck(item.id);
+                  navigate(`/cards?deck=${item.id}`);
+                }}
+                key={item.id}
+                title={item.title}
+                cardsInDeck={item.cardsInDeck}
+                mode="edit"
+              />
+            </>
+          ))}
+      </section>
+      {help && <Help close={() => setHelp(false)} />}
+    </>
+  );
+};
