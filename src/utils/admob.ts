@@ -29,8 +29,8 @@ export async function loadAd(): Promise<void> {
 
     const options: AdOptions = {
         adId: 'ca-app-pub-5851642075240630/9038844003',
-        isTesting: true,
-        npa: false
+        isTesting: false,
+        npa: true
     };
     await AdMob.prepareInterstitial(options);
     await AdMob.showInterstitial();
