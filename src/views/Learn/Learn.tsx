@@ -51,7 +51,7 @@ export const Learn = ( ) => {
     return (
         <>
             <SearchBar />
-            <section className="w-[100vw] overflow-y-auto appear1 h-[80vh] flex flex-col items-center gap-4 p-3">
+            <section className="w-[100vw] overflow-y-auto appear1 h-[80vh] overflow-y-auto flex flex-col items-center gap-4 p-3">
                 {
                     decksToSee.length < 1 &&
                     <div className="w-full h-full flex justify-center items-center">
