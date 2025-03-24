@@ -3,6 +3,11 @@
     backface-visibility: hidden;
     transition: transform 500ms;
     will-change: transform;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
 }
 
 .flip1 {

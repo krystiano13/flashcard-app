@@ -126,13 +126,13 @@ export const Review:React.FC<Props> = ({ ad, adFunc }) => {
                 deck !== undefined &&
                 <div onClick={() => setFlip(true)} id="card" className="w-[80%] h-auto min-h-[70vh] relative">
                     <section id="oneside"
-                             className={`${flip ? "flip3" : "flip1"} w-full p-5 absolute h-full gradient2 rounded-lg overflow-y-auto`}>
+                             className={`${flip ? "flip3" : "flip1"} w-full p-8 py-16 absolute h-full gradient2 rounded-lg overflow-y-auto`}>
                         <p className="text-white text-center text-lg md:text-2xl">
                             {deck?.cards[cardID].oneSide}
                         </p>
                     </section>
                     <section id="secondside"
-                             className={`${flip ? "flip4" : "flip2"} w-full p-5 absolute gradient2 h-full rounded-lg overflow-y-auto`}>
+                             className={`${flip ? "flip4" : "flip2"} w-full p-8 py-16 absolute gradient2 h-full rounded-lg overflow-y-auto`}>
                         <p className="text-white text-center text-lg md:text-2xl">
                             {deck?.cards[cardID].secondSide}
                         </p>
